@@ -43,7 +43,7 @@
     </td>
     <td align="center">
       <a href="https://netbeans.apache.org/" target="_blank" rel="noreferrer">
-        <img src="https://www.vectorlogo.zone/logos/netbeans/netbeans-icon.svg" alt="netbeans" width="40" height="40"/>
+        <img src="https://clipground.com/images/netbeans-logo-clipart-8.png" alt="netbeans" width="40" height="40"/>
       </a>
     </td>
     <td align="center">
