@@ -419,3 +419,6 @@ FodyWeavers.xsd
 
 #git file
 .git
+
+#vs code fils
+.vscode
