@@ -1,6 +1,6 @@
 # Portfolio
 
-<h3 align="left">Languages & Tools:</h3>
+<!-- <h3 align="left">Languages & Tools:</h3>
 
 <table border="0">
   <tr>
@@ -57,4 +57,25 @@
       </a>
     </td>
   </tr>
-</table>
+</table> -->
+
+<h3 align="left "><b><i>Language :</i></b></h3>
+<p align="left">
+  <a href="https://skillicons.dev">
+   <img src="https://skillicons.dev/icons?i=php,html,css,javascript,mysql" />
+  </a>
+</p>
+
+<h3 align="left "><b><i>Tool :</i></b></h3>
+<p align="left">
+  <a href="https://skillicons.dev">
+   <img src="https://skillicons.dev/icons?i=vscode,git,postman" />
+  </a>
+</p>
+
+<h3 align="left "><b><i>Frameworks :</i></b></h3>
+<p align="left">
+  <a href="https://skillicons.dev">
+   <img src="https://skillicons.dev/icons?i=bootstrap" />
+  </a>
+</p>
