@@ -1,0 +1,5 @@
+/*!
+ * Main JS  v1.0 
+ * Copyright @ 2026 The Ashen Hansaka Authors
+ * Licensed under MIT
+ */
