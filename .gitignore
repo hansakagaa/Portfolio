@@ -422,3 +422,6 @@ FodyWeavers.xsd
 
 #vs code fils
 .vscode
+
+#github
+*.github
