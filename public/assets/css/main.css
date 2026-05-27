@@ -4,3 +4,14 @@
  * Copyright @ 2026 The Ashen Hansaka Authors
  * Licensed under MIT
  */
+
+ /* Fonts */
+:root {
+  --default-font:
+    "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Raleway", sans-serif;
+  --footer-font: "Nunito Sans", sans-serif;
+  --nav-font: "Poppins", sans-serif;
+}
