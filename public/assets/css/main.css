@@ -52,6 +52,173 @@ body.dark-theme{
 }
 
 
+/* Nav Menu Colors  */
+:root {
+  --nav-color: #31344b;
+  --nav-hover-color: #112bf0;
+  --nav-mobile-background-color: #e6e7ee;
+  --nav-dropdown-background-color: #e6e7ee;
+  --nav-dropdown-color: #212529;
+  --nav-dropdown-hover-color: #112bf0;
+  --nav-dropdown-border-color: #f3f7fa0d;
+}
+
+body.dark-theme{
+  --nav-color: #c9cbcf;
+  --nav-hover-color: #637eff;
+  --nav-mobile-background-color: #1e1f26;
+  --nav-dropdown-background-color: #25262f;
+  --nav-dropdown-color: #e1e3e6;
+  --nav-dropdown-hover-color: #637eff;
+  --nav-dropdown-border-color: #ffffff0a;
+}
+
+/* header Custom Variables */
+:root {
+  --header-min-width: 200px;
+  --header-font-size: 22px;
+}
+
+/*--------------------------------------------------------------
+# Global Header
+--------------------------------------------------------------*/
+.header {
+  color: var(--default-color);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  top: 0;
+  left: 0;
+  bottom: 0;
+  padding: 0 15px;
+  transition: all ease-in-out 0.3s;
+  overflow-y: auto;
+  z-index: 997;
+  min-width: var(--header-min-width);
+  max-width: max-content;
+}
+
+@media (max-width: 1199px) {
+  .header {
+    background-color: var(--background-color);
+    border-right: 1px solid
+      color-mix(in srgb, var(--default-color), transparent 80%);
+    box-shadow: var(--box-shadow-soft) !important;
+    left: -100%;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1600px) {
+  .header ~ main {
+    margin-left: 150px;
+  }
+}
+
+.header.header-show {
+  left: 0;
+}
+
+.header .header-toggle {
+  color: var(--accent-color);
+  background-color: var(--background-color);
+  font-size: var(--header-font-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 9999;
+  transition: background-color 0.3s;
+  box-shadow: var(--box-shadow);
+}
+
+.header .header-toggle:hover {
+  color: var(--contrast-color);
+  background-color: color-mix(in srgb, var(--background-color) 90%, white 15%);
+  box-shadow: var(--box-shadow-inset);
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+.nav-menu {
+  padding: 0;
+  z-index: 9997;
+  width: max-content;
+}
+
+.nav-menu ul {
+  list-style: none;
+  padding: 0 0 20px 0;
+  margin: 0;
+  width: 140px;
+}
+
+.nav-menu a,
+.nav-menu a:focus {
+  color: var(--nav-color);
+  font-family: var(--nav-font);
+  display: flex;
+  align-items: center;
+  padding: 10px 18px;
+  margin-bottom: 8px;
+  font-size: 15px;
+  border-radius: 50px;
+  background: var(--background-color);
+  height: 56px;
+  width: 100%;
+  overflow: hidden;
+  transition: 0.3s;
+  box-shadow: var(--box-shadow);
+}
+
+.nav-menu a i,
+.nav-menu a:focus i {
+  font-size: 20px;
+}
+
+.nav-menu a span,
+.nav-menu a:focus span {
+  padding: 0 5px 0 7px;
+}
+
+@media (min-width: 992px) {
+  .nav-menu a,
+  .nav-menu a:focus {
+    max-width: 56px;
+  }
+
+  .nav-menu a span,
+  .nav-menu a:focus span {
+    display: none;
+  }
+}
+
+.nav-menu a:hover,
+.nav-menu .active,
+.nav-menu .active:focus,
+.nav-menu li:hover > a {
+  color: var(--nav-hover-color);
+  background: var(--background-color);
+  box-shadow: var(--box-shadow-inset);
+}
+
+.nav-menu a:hover,
+.nav-menu li:hover > a {
+  max-width: 100%;
+  color: var(--nav-hover-color);
+}
+
+.nav-menu a:hover span,
+.nav-menu li:hover > a span {
+  display: block;
+}
 
 /*--------------------------------------------------------------
 # Preloader
