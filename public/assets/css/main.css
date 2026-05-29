@@ -529,7 +529,6 @@ input:checked + .toggle-slot .stars-wrapper {
   opacity: 1;
 }
 
-
 /*--------------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/
@@ -563,4 +562,39 @@ input:checked + .toggle-slot .stars-wrapper {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/*--------------------------------------------------------------
+# Scroll Top Button
+--------------------------------------------------------------*/
+.scroll-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: -15px;
+  z-index: 99999;
+  background-color: var(--background-color);
+  width: 44px;
+  height: 44px;
+  border-radius: 50px;
+  transition: all 0.4s;
+  box-shadow: var(--box-shadow);
+}
+
+.scroll-top i {
+  font-size: 24px;
+  color: var(--accent-color);
+  line-height: 0;
+}
+
+.scroll-top:hover {
+  color: var(--contrast-color);
+  box-shadow: var(--box-shadow-inset);
+}
+
+.scroll-top.active {
+  visibility: visible;
+  opacity: 1;
+  bottom: 15px;
 }
