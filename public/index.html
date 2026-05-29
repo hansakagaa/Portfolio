@@ -29,6 +29,25 @@
     <header id="header" class="header">
       <i class="header-toggle d-xl-none bi bi-list"></i>
 
+      <!-- Toggle Switch Container -->
+      <label class="toggle-wrapper xl-fixed">
+          <input type="checkbox" id="toggle-trigger">
+          <div class="toggle-slot">
+              <!-- Sun / Moon Node -->
+              <div class="sun-moon-node"></div>
+              <!-- Clouds (Day time) -->
+              <div class="cloud-wrapper">
+                  <div class="cloud-element"></div>
+              </div>
+              <!-- Stars (Night time) -->
+              <div class="stars-wrapper">
+                  <span class="star-sparkle"></span>
+                  <span class="star-sparkle"></span>
+                  <span class="star-sparkle"></span>
+              </div>
+          </div>
+      </label>
+      
       <nav class="nav-menu">
        <ul>
         <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i><span>Home</span></a></li>

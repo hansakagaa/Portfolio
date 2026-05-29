@@ -79,6 +79,65 @@
   window.addEventListener('load', navMenuScrollspy);
   document.addEventListener('scroll', navMenuScrollspy);
   
+  /**
+   * Theme toggle button with Local Storage, Device Detection, and Image Switcher
+   */
+  document.addEventListener("DOMContentLoaded", () => {
+      const toggleTrigger = document.getElementById("toggle-trigger");
+      const bgContainer = document.getElementById("index-page");
+      const favImg = document.getElementById("fav-img");
+
+      const lightImgSrc = "assets/images/favicon.png"; 
+      const darkImgSrc = "assets/images/favicon-dark.png";
+
+      const savedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      let currentTheme = "light";
+      if (savedTheme) {
+          currentTheme = savedTheme;
+      } else if (prefersDark) {
+          currentTheme = "dark";
+      }
+
+      if (currentTheme === "dark") {
+          if (toggleTrigger) toggleTrigger.checked = true; 
+          if (bgContainer) bgContainer.classList.add("dark-theme");
+          if (favImg) favImg.src = darkImgSrc;
+      } else {
+          if (toggleTrigger) toggleTrigger.checked = false;
+          if (bgContainer) bgContainer.classList.remove("dark-theme");
+          if (favImg) favImg.src = lightImgSrc;
+      }
+
+      if (toggleTrigger) {
+          toggleTrigger.addEventListener("change", () => {
+              if (toggleTrigger.checked) {
+                  if (bgContainer) bgContainer.classList.add("dark-theme");
+                  if (favImg) favImg.src = darkImgSrc;
+                  localStorage.setItem("theme", "dark"); 
+              } else {
+                  if (bgContainer) bgContainer.classList.remove("dark-theme");
+                  if (favImg) favImg.src = lightImgSrc;
+                  localStorage.setItem("theme", "light"); 
+              }
+          });
+      }
+
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+          if (!localStorage.getItem("theme")) {
+              if (e.matches) {
+                  if (toggleTrigger) toggleTrigger.checked = true;
+                  if (bgContainer) bgContainer.classList.add("dark-theme");
+                  if (favImg) favImg.src = darkImgSrc;
+              } else {
+                  if (toggleTrigger) toggleTrigger.checked = false;
+                  if (bgContainer) bgContainer.classList.remove("dark-theme");
+                  if (favImg) favImg.src = lightImgSrc;
+              }
+          }
+      });
+  });
 
 
   /**
