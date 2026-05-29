@@ -57,7 +57,28 @@
   }
   headerCloserBtn.addEventListener('click', headerCloser);
 
+  /**
+   * Nav-menu Scrollspy
+   */
+  let navMenuLinks = document.querySelectorAll('.nav-menu a');
 
+  function navMenuScrollspy() {
+    navMenuLinks.forEach(navMenuLink => {
+      if (!navMenuLink.hash) return;
+      let section = document.querySelector(navMenuLink.hash);
+      if (!section) return;
+      let position = window.scrollY + 200;
+      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
+        document.querySelectorAll('.nav-menu a.active').forEach(link => link.classList.remove('active'));
+        navMenuLink.classList.add('active');
+      } else {
+        navMenuLink.classList.remove('active');
+      }
+    })
+  }
+  window.addEventListener('load', navMenuScrollspy);
+  document.addEventListener('scroll', navMenuScrollspy);
+  
 
 
   /**
