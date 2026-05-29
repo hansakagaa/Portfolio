@@ -80,6 +80,131 @@ body.dark-theme{
 }
 
 /*--------------------------------------------------------------
+# General Styling & Shared Classes
+--------------------------------------------------------------*/
+.index-page {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-family: var(--default-font);
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: color-mix(in srgb, var(--accent-color), transparent 25%);
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+}
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+  border-style: none;
+}
+
+.shadow-inset {
+  box-shadow: var(--box-shadow-inset) !important;
+}
+
+.shadow-soft {
+  box-shadow: var(--box-shadow-soft) !important;
+}
+
+.shadow {
+  box-shadow: var(--box-shadow) !important;
+}
+
+.alert {
+  text-align: center;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 300;
+  border-radius: 0.55rem;
+  font-size: 0.875rem;
+  border: 0.0625rem solid var(--form-border-color);
+  box-shadow: var(--box-shadow-soft);
+  background: var(--background-color);
+}
+
+.color-primary {
+  color: var(--primary-color);
+}
+
+.color-success {
+  color: var(--success-color);
+}
+
+.color-danger {
+  color: var(--danger-color);
+}
+
+.btn {
+  position: relative;
+  transition: all 0.2s ease;
+  letter-spacing: 0.025em;
+  font-size: 1rem;
+  color: var(--accent-color);
+  border-color: var(--form-border-color);
+  box-shadow: var(--box-shadow);
+  background-color: var(--background-color);
+  line-height: 1.5;
+  border-radius: 0.55rem;
+  border: 0.0625rem solid transparent;
+  padding: 0.55rem 0.95rem;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.275rem 0.425rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.55rem;
+  border: 0.0625rem solid var(--form-border-color);
+  box-shadow: var(--box-shadow-inset);
+  background-color: transparent;
+  transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+}
+
+.btn:disabled,
+.btn.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+  color: var(--default-color);
+  box-shadow: var(--box-shadow-inset);
+}
+
+/*--------------------------------------------------------------
 # Global Header
 --------------------------------------------------------------*/
 .header {
