@@ -1,6 +1,6 @@
 <?php
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
-$redirect_url = $protocol . $_SERVER['HTTP_HOST'] . '/profile/public/';
+$redirect_url = $protocol . $_SERVER['HTTP_HOST'] . '/public/';
 ?>
 <!DOCTYPE html>
 <html lang="en">
