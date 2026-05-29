@@ -663,3 +663,14 @@ input:checked + .toggle-slot .stars-wrapper {
   opacity: 1;
   bottom: 15px;
 }
+
+/*--------------------------------------------------------------
+# Global Sections
+--------------------------------------------------------------*/
+section,
+.section {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 60px 0;
+  overflow: clip;
+}
