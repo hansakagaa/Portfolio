@@ -93,6 +93,24 @@ body.dark-theme {
   --theme-box-shadow: 0 4px 10px var(--background-color), inset -10px -10px 0px #cbd5e1;
 }
 
+/* form Custom Variables */
+:root {
+  --form-radius: 0.55rem;
+  --form-width: 100%;
+  --form-height: calc(1.5em + 1.2rem + 0.0625rem);
+  --form-font-size: 1rem;
+  --form-font-weight: 300;
+  --form-line-height: 1.5;
+  --form-color: #44476a;
+  --form-border-size: 0.0625rem;
+  --form-border-color: #d1d9e6;
+}
+
+body.dark-theme {
+  --form-color: #c9cbcf;
+  --form-border-color: #2a2c36;
+}
+
 /* Smooth scroll */
 :root {
   scroll-behavior: smooth;
@@ -720,4 +738,192 @@ section,
 
 .section-title p {
   margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+# Form controls and form groups
+--------------------------------------------------------------*/
+
+.form-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-control {
+  display: block;
+  width: var(--form-width);
+  height: var(--form-height);
+  padding: 0.6rem 0.75rem;
+  font-size: var(--form-font-size);
+  font-weight: var(--form-font-weight);
+  line-height: var(--form-line-height);
+  color: var(--form-color);
+  background-color: var(--background-color);
+  background-clip: padding-box;
+  border: 0.0625rem solid var(--form-border-color);
+  border-radius: var(--form-radius);
+  box-shadow: var(--box-shadow-inset);
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-image 0.2s ease-in-out;
+}
+
+.form-text {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+textarea.form-control {
+  min-height: calc((1.5em + 1.2rem + 0.0625rem) * 2.5);
+}
+
+.form-control.is-valid {
+  border-color: var(--success-color);
+  padding-right: calc(1.5em + 1.2rem);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2318634B' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: center right calc(0.375em + 0.3rem);
+  background-size: calc(0.4875rem + 0.6rem) calc(0.4875rem + 0.6rem);
+}
+
+.form-control.is-invalid {
+  border-color: var(--danger-color);
+  padding-right: calc(1.5em + 1.2rem);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23A91E2C' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23A91E2C' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center right calc(0.375em + 0.3rem);
+  background-size: calc(0.4875rem + 0.6rem) calc(0.4875rem + 0.6rem);
+}
+
+/*--------------------------------------------------------------
+# Card & Box Sizing Classes
+--------------------------------------------------------------*/
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: var(--background-color);
+  background-clip: border-box;
+  border: 0.0625rem solid var(--border-color);
+  border-radius: 0.55rem;
+  padding: 1rem;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  padding: 1.5rem;
+}
+
+/*--------------------------------------------------------------
+# Contact Section
+--------------------------------------------------------------*/
+.contact .info-item {
+  margin-bottom: 40px;
+}
+
+.contact .info-item .icon {
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 95%);
+  font-size: 20px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+  margin-right: 15px;
+  box-shadow: var(--box-shadow);
+}
+
+.contact .info-item h3 {
+  padding: 0;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.contact .info-item p {
+  padding: 0;
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+.contact .info-item:hover .icon {
+  color: var(--contrast-color);
+  box-shadow: var(--box-shadow-inset);
+}
+
+.contact .php-email-form {
+  height: 100%;
+}
+
+.contact .php-email-form input[type="text"]:focus,
+.contact .php-email-form input[type="text"]:focus-visible,
+.contact .php-email-form input[type="email"]:focus,
+.contact .php-email-form input[type="email"]:focus-visible,
+.contact .php-email-form input[type="tel"]:focus,
+.contact .php-email-form input[type="tel"]:focus-visible,
+.contact .php-email-form textarea:focus,
+.contact .php-email-form textarea:focus-visible {
+  border-color: color-mix(in srgb, var(--form-color), transparent 60%);
+  outline: 0;
+}
+
+.contact .php-email-form input[type="text"]::placeholder,
+.contact .php-email-form input[type="email"]::placeholder,
+.contact .php-email-form input[type="tel"]::placeholder,
+.contact .php-email-form textarea::placeholder {
+  color: color-mix(in srgb, var(--default-color), transparent 70%);
+}
+
+.contact
+  .php-email-form
+  button[type="submit"]:hover:not(:disabled):not(.disabled) {
+  box-shadow: var(--box-shadow-inset);
+  color: var(--contrast-color);
+  cursor: pointer;
+}
+
+/* PHP Email Form Messages
+------------------------------*/
+.php-email-form .error-message {
+  display: none;
+  text-align: left;
+}
+
+.php-email-form .sent-message {
+  display: none;
+}
+
+.php-email-form .loading {
+  display: none;
+  background: var(--background-color);
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 24px;
+}
+
+.php-email-form .loading:before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin: 0 10px -6px 0;
+  border: 3px solid color-mix(in srgb, var(--accent-color), transparent 30%);
+  border-top-color: var(--background-color);
+  animation: php-email-form-loading 1s linear infinite;
+}
+
+@keyframes php-email-form-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

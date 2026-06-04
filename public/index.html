@@ -26,7 +26,7 @@
 </head>
 <body class="index-page" id="index-page">
 
-    <header id="header" class="header d-flex align-items-center">
+    <header id="header" class="header">
       <i class="header-toggle d-xl-none bi bi-list"></i>
 
       <!-- Toggle Switch Container -->
@@ -60,7 +60,114 @@
       </nav>
     </header>
 
-    <main class="main header-closer"></main>
+    <main class="main header-closer">
+
+
+      
+      <!-- Contact Section -->
+      <section id="contact" class="contact section">
+
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Contact</h2>
+          <p>Have a project in mind, need a developer, or want to collaborate on a creative venture? Drop a message below and let's bring your ideas to life.</p>
+        </div>
+
+        <div class="container" data-aos="fade" data-aos-delay="100">
+
+          <div class="row gy-4">
+
+            <div class="col-lg-4">
+              <div class="d-flex-center h-100">
+                <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
+                  <i class="icon bi bi-geo-alt flex-shrink-0"></i>
+                  <div>
+                    <h3 class="d-flex justify-content-between">Address <a class="badge color-primary ms-3 href="https://maps.google.com" target="_blank" rel="noopener noreferrer"><i>Open in Map</i> <i class="bi bi-sign-turn-right"></i></a></h3>
+                    <p>Kandy, Sri Lanka.</p>
+                  </div>
+                </div>
+
+                <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                  <i class="icon bi bi-telephone flex-shrink-0"></i>
+                  <div>
+                    <h3>Call Us</h3>
+                    <p>+947 620 20 312</p>
+                  </div>
+                </div>
+
+                <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                  <i class="icon bi bi-envelope flex-shrink-0"></i>
+                  <div>
+                    <h3>Email Us</h3>
+                    <p>hashen.info@gmail.com</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="col-lg-8">
+              <div class="card shadow-inset">
+                <div class="card-body shadow-soft">
+                  <form action="../src/contact.php" method="post" class="php-email-form" id="contactForm" autocomplete="off">
+                    <div class="row gy-4">
+
+                      <div class="col-md-12" data-aos="fade-up" data-aos-delay="200" >
+                        <div class="form-group">
+                          <label for="contactName" class="d-none">Your Name</label>
+                          <input type="text" name="name" class="form-control" id="contactName" aria-describedby="contactNameHelp" placeholder="Your Name" required="" autocomplete="off">
+                          <small id="contactNameHelp" class="form-text text-danger d-none">Please enter a valid name (letters only).</small>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 " data-aos="fade-up" data-aos-delay="300" >
+                        <div class="form-group">
+                          <label for="contactEmail" class="d-none">Your Email</label>
+                          <input type="email" class="form-control" name="email" id="contactEmail" aria-describedby="contactEmailHelp" placeholder="Your Email" required="">
+                          <small id="contactEmailHelp" class="form-text text-danger d-none">Please enter a valid email address.</small>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 " data-aos="fade-up" data-aos-delay="300" >
+                        <div class="form-group">
+                          <label for="contactPhone" class="d-none">Your Phone</label>
+                          <input type="tel" class="form-control" name="phone" id="contactPhone" aria-describedby="contactPhoneHelp" placeholder="Your Phone" required="">
+                          <small id="contactPhoneHelp" class="form-text text-danger d-none">Please enter a valid phone number.</small>
+                        </div>
+                      </div>
+
+                      <div class="col-md-12" data-aos="fade-up" data-aos-delay="400" >
+                        <div class="form-group">
+                          <label for="contactSubject" class="d-none">Subject</label>
+                          <input type="text" class="form-control" name="subject" id="contactSubject" aria-describedby="contactSubjectHelp" placeholder="Subject" required="">
+                          <small id="contactSubjectHelp" class="form-text text-danger d-none">Subject cannot be left blank.</small>
+                        </div>
+                      </div>
+
+                      <div class="col-md-12" data-aos="fade-up" data-aos-delay="500" >
+                        <div class="form-group">
+                          <label for="contactMessage" class="d-none">Message</label>
+                          <textarea class="form-control" name="message" id="contactMessage" rows="6" aria-describedby="contactMessageHelp" placeholder="Message" required=""></textarea>
+                          <small id="contactMessageHelp" class="form-text text-danger d-none">Please enter a message with at least 10 characters.</small>
+                        </div>
+                      </div>
+
+                      <div class="col-md-12 text-center" data-aos="fade-up" data-aos-delay="600" >
+                        <div class="loading" id="contactLoading">Loading</div>
+                        <div class="alert color-danger error-message" id="contactErrorMessage"></div>
+                        <div class="alert color-success sent-message" id="contactSentMessage">Your message has been sent. Thank you!</div>
+
+                        <button class="btn" type="submit" id="contactBtn" disabled><i class="bi bi-send flex-shrink-0"></i> Send Message</button>
+                      </div>
+
+                    </div>
+                  </form>
+                </div>
+              </div>            
+            </div>
+          </div>
+        </div>
+      </section><!-- /Contact Section -->
+    </main>
 
     <footer id="footer" class="footer relative" data-aos="fade-up">
       <div class="container">
