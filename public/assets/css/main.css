@@ -16,22 +16,31 @@
   --nav-font: "Poppins", sans-serif;
 }
 
+/* Global Variables */
+:root{
+  --transition-duration: 0.3s;
+  --transition-easing: ease-in-out;
+  --radius-50: 50%;
+  --radius-100: 100%;
+}
+
 /* Global Colors */
 :root {
-  --background-color: #e6e7ee;
+  --background-color: #e8e8e8;
   --default-color: #31344b;
   --heading-color: #31344b;
   --accent-color: #31344b;
   --surface-color: #ffffff;
-  --contrast-color: #112bf0;
+  --contrast-color: #001eff;
   --box-shadow-color: #b8b9be;
+  --border-color: #f3f7fa0d;
+  --success-color: #07a743;
+  --danger-color: #ff142b;
+  --primary-color: #385ae1;
+  --white-color: #ffffff;
   --box-shadow: 3px 3px 6px var(--box-shadow-color), -3px -3px 6px var(--surface-color);
   --box-shadow-inset: inset 2px 2px 5px var(--box-shadow-color), inset -3px -3px 7px var(--surface-color);
   --box-shadow-soft: 6px 6px 12px var(--box-shadow-color), -6px -6px 12px var(--surface-color);
-  --border-color: #f3f7fa0d;
-  --success-color: #059652;
-  --danger-color: #df1529;
-  --primary-color: #385ae1;
 }
 
 body.dark-theme{
@@ -43,9 +52,10 @@ body.dark-theme{
   --contrast-color: #637eff;
   --box-shadow-color: #121317;
   --border-color: #ffffff0a;
-  --success-color: #10b981;
-  --danger-color: #ef4444;
+  --success-color: #10b9818f;
+  --danger-color: #ef44448f;
   --primary-color: #4d6ef6;
+  --white-color: #ffffff;
   --box-shadow: 4px 4px 8px var(--box-shadow-color), -4px -4px 8px var(--surface-color);
   --box-shadow-inset: inset 3px 3px 6px var(--box-shadow-color), inset -3px -3px 6px var(--surface-color);
   --box-shadow-soft: 8px 8px 16px var(--box-shadow-color), -8px -8px 16px var(--surface-color);
@@ -56,21 +66,11 @@ body.dark-theme{
 :root {
   --nav-color: #31344b;
   --nav-hover-color: #112bf0;
-  --nav-mobile-background-color: #e6e7ee;
-  --nav-dropdown-background-color: #e6e7ee;
-  --nav-dropdown-color: #212529;
-  --nav-dropdown-hover-color: #112bf0;
-  --nav-dropdown-border-color: #f3f7fa0d;
 }
 
 body.dark-theme{
   --nav-color: #c9cbcf;
   --nav-hover-color: #637eff;
-  --nav-mobile-background-color: #1e1f26;
-  --nav-dropdown-background-color: #25262f;
-  --nav-dropdown-color: #e1e3e6;
-  --nav-dropdown-hover-color: #637eff;
-  --nav-dropdown-border-color: #ffffff0a;
 }
 
 /* header Custom Variables */
@@ -240,7 +240,7 @@ img {
   left: 0;
   bottom: 0;
   padding: 0 15px;
-  transition: all ease-in-out 0.3s;
+  transition: all var(--transition-duration) var(--transition-easing);
   overflow-y: auto;
   z-index: 997;
   min-width: var(--header-min-width);
@@ -276,19 +276,19 @@ img {
   justify-content: center;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: var(--radius-50);
   cursor: pointer;
   position: fixed;
   top: 15px;
   right: 15px;
   z-index: 9999;
-  transition: background-color 0.3s;
+  transition: background-color var(--transition-duration) var(--transition-easing);
   box-shadow: var(--box-shadow);
 }
 
 .header .header-toggle:hover {
   color: var(--contrast-color);
-  background-color: color-mix(in srgb, var(--background-color) 90%, white 15%);
+  background-color: color-mix(in srgb, var(--background-color) 90%, var(--white-color) 15%);
   box-shadow: var(--box-shadow-inset);
 }
 
@@ -322,7 +322,7 @@ img {
   height: 56px;
   width: 100%;
   overflow: hidden;
-  transition: 0.3s;
+  transition: var(--transition-duration);
   box-shadow: var(--box-shadow);
 }
 
@@ -673,4 +673,51 @@ section,
   background-color: var(--background-color);
   padding: 60px 0;
   overflow: clip;
+}
+
+/*--------------------------------------------------------------
+# Global Section Titles
+--------------------------------------------------------------*/
+.section-title {
+  text-align: center;
+  padding-bottom: 60px;
+  position: relative;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.section-title h2:before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 160px;
+  height: 1px;
+  background: color-mix(in srgb, var(--default-color), transparent 60%);
+  left: 0;
+  right: 0;
+  bottom: 1px;
+  margin: auto;
+}
+
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--accent-color);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.section-title p {
+  margin-bottom: 0;
 }
