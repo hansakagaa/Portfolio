@@ -153,8 +153,14 @@
 
                       <div class="col-md-12 text-center" data-aos="fade-up" data-aos-delay="600" >
                         <div class="loading" id="contactLoading">Loading</div>
-                        <div class="alert color-danger error-message" id="contactErrorMessage"></div>
-                        <div class="alert color-success sent-message" id="contactSentMessage">Your message has been sent. Thank you!</div>
+                        <div class="alert color-danger error-message" data-dismiss="alert">
+                          <span id="contactErrorMessage"></span>
+                          <button type="button" class="close" aria-label="Close"><i class="bi bi-x"></i></button>
+                        </div>
+                        <div class="alert color-success sent-message" data-dismiss="alert">
+                         <span id="contactSentMessage">Your message has been sent. Thank you!</span>
+                          <button type="button" class="close" aria-label="Close"><i class="bi bi-x"></i></button>
+                        </div>
 
                         <button class="btn" type="submit" id="contactBtn" disabled><i class="bi bi-send flex-shrink-0"></i> Send Message</button>
                       </div>
@@ -208,6 +214,7 @@
     <script src="assets/js/counter.js"></script>
      -->
     <script src="assets/js/validate/contact-form.js"></script>
+    <script src="assets/js/utils.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
