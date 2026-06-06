@@ -277,6 +277,9 @@ th {
 .min-vw-100 {
   min-width: 100vw !important;
 }
+.w-max-content {
+  width: max-content !important;
+}
 
 .h-25 {
   height: 25% !important;
@@ -301,6 +304,9 @@ th {
 }
 .min-vh-100 {
   min-height: 100vh !important;
+}
+.h-max-content {
+  height: max-content !important;
 }
 
 /* Margins */
