@@ -1408,3 +1408,65 @@ textarea.form-control {
     height: 280px;
   }
 }
+
+/*--------------------------------------------------------------
+# Stats Section
+--------------------------------------------------------------*/
+.item,
+.stats .item {
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.25rem;
+  border: var(--border-width) solid var(--form-border-color);
+  border-radius: var(--radius-50);
+  background-color: var(--background-color);
+  box-shadow: var(--box-shadow-soft);
+  transition: all var(--transition-duration) ease;
+  position: relative;
+  z-index: 1;
+}
+
+.item.item-shape-md,
+.stats .item.item-shape-md {
+  width: 5.5rem;
+  height: 5.5rem;
+}
+
+.item.item-shape-sm,
+.stats .item.item-shape-sm {
+  width: 4.5rem;
+  height: 4.5rem;
+}
+
+.item.item-shape-lg,
+.stats .item.item-shape-lg {
+  width: 6.5rem;
+  height: 6.5rem;
+}
+
+.stats .stats-item {
+  width: 100%;
+  position: relative;
+  text-align: center;
+  z-index: 0;
+}
+
+.stats .stats-item span {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 1rem 0 0.5rem;
+  font-family: var(--footer-font);
+  color: var(--accent-color);
+  opacity: 0.8;
+  /* color: color-mix(in srgb, var(--accent-color), transparent 25); */
+}
+
+.stats .stats-item p {
+  padding: 0;
+  margin: 0;
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  font-size: 16px;
+}

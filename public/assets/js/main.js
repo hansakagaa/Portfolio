@@ -180,6 +180,18 @@
     setTimeout(type, 1000);
   });
 
+    
+  /**
+   * Initiate Pure Counter
+   */
+  document.addEventListener("DOMContentLoaded", function() {
+    if (typeof Counter === 'function') {
+      new Counter({
+        selector: '.counter'
+      });
+    }
+  });
+
 
   /**
    * Scroll top button
