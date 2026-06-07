@@ -5,7 +5,7 @@
  * Licensed under MIT
  */
 
- /* Fonts */
+/* Fonts */
 :root {
   --default-font:
     "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
@@ -20,7 +20,8 @@
 :root{
   --transition-duration: 0.3s;
   --transition-easing: ease-in-out;
-  --radius-normal: 0.55rem;
+  --radius-md: 0.55rem;
+  --radius-lg: 1rem;
   --radius-50: 50%;
   --radius-100: 100%;
   --rounded-length: 40px;
@@ -42,9 +43,9 @@
   --danger-color: #ff142b;
   --primary-color: #385ae1;
   --white-color: #ffffff;
-  --box-shadow: 3px 3px 6px var(--box-shadow-color), -3px -3px 6px var(--surface-color);
-  --box-shadow-inset: inset 2px 2px 5px var(--box-shadow-color), inset -3px -3px 7px var(--surface-color);
-  --box-shadow-soft: 6px 6px 12px var(--box-shadow-color), -6px -6px 12px var(--surface-color);
+  --box-shadow: 5px 5px 12px var(--box-shadow-color), -5px -5px 12px var(--surface-color);
+  --box-shadow-inset: inset 4px 4px 9px var(--box-shadow-color), inset -4px -4px 9px var(--surface-color);
+  --box-shadow-soft: 10px 10px 24px var(--box-shadow-color), -10px -10px 24px var(--surface-color);
 }
 
 body.dark-theme{
@@ -60,9 +61,9 @@ body.dark-theme{
   --danger-color: #ef44448f;
   --primary-color: #4d6ef6;
   --white-color: #ffffff;
-  --box-shadow: 4px 4px 8px var(--box-shadow-color), -4px -4px 8px var(--surface-color);
-  --box-shadow-inset: inset 3px 3px 6px var(--box-shadow-color), inset -3px -3px 6px var(--surface-color);
-  --box-shadow-soft: 8px 8px 16px var(--box-shadow-color), -8px -8px 16px var(--surface-color);
+  --box-shadow: 5px 5px 12px var(--box-shadow-color), -5px -5px 12px var(--surface-color);
+  --box-shadow-inset: inset 4px 4px 9px var(--box-shadow-color), inset -4px -4px 9px var(--surface-color);
+  --box-shadow-soft: 10px 10px 24px var(--box-shadow-color), -10px -10px 24px var(--surface-color);
 }
 
 /* header Custom Variables */
@@ -98,6 +99,16 @@ body.dark-theme {
 
 body.dark-theme {
   --form-border-color: #2a2c36;
+}
+
+/* Social colors */
+:root {
+  --twitter-x-color: #000000;
+  --facebook-color: #1877F2;
+  --instagram-color: #e1306c;
+  --linkedin-color: #0077b5;
+  --youtube-color: #ff0000;
+  --github-color: #24292F;
 }
 
 /* Smooth scroll */
@@ -170,7 +181,7 @@ img {
   padding: 1rem 1.5rem;
   margin-bottom: 1rem;
   font-weight: 300;
-  border-radius: var(--radius-normal);
+  border-radius: var(--radius-md);
   font-size: 0.875rem;
   border: var(--border-width) solid var(--form-border-color);
   box-shadow: var(--box-shadow-soft);
@@ -199,7 +210,7 @@ img {
   box-shadow: var(--box-shadow);
   background-color: var(--background-color);
   line-height: 1.5;
-  border-radius: var(--radius-normal);
+  border-radius: var(--radius-md);
   border: var(--border-width) solid transparent;
   padding: 0.55rem 0.95rem;
   font-weight: 400;
@@ -216,7 +227,7 @@ img {
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  border-radius: var(--radius-normal);
+  border-radius: var(--radius-md);
   border: var(--border-width) solid var(--form-border-color);
   box-shadow: var(--box-shadow-inset);
   background-color: transparent;
@@ -762,7 +773,7 @@ section,
   background-color: var(--background-color);
   background-clip: padding-box;
   border: var(--border-width) solid var(--form-border-color);
-  border-radius: var(--radius-normal);
+  border-radius: var(--radius-md);
   box-shadow: var(--box-shadow-inset);
   transition: border-color var(--transition-duration) var(--transition-easing),
    box-shadow var(--transition-duration) var(--transition-easing),
@@ -809,7 +820,7 @@ textarea.form-control {
   background-color: var(--background-color);
   background-clip: border-box;
   border: var(--border-width) solid var(--border-color);
-  border-radius: var(--radius-normal);
+  border-radius: var(--radius-md);
   padding: 1rem;
 }
 
@@ -929,4 +940,345 @@ textarea.form-control {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/*--------------------------------------------------------------
+# Hero / Home Section Styles
+--------------------------------------------------------------*/
+.hero {
+  padding: 120px 20px 80px 20px;
+  background-color: var(--background-color);
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* --- Left Side: Text --- */
+.hero-content {
+  flex: 1.2;
+  text-align: left;
+}
+
+.hero-welcome {
+  font-family: var(--nav-font);
+  color: var(--accent-color);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.hero-name {
+  color: var(--heading-color);
+  font-weight: 800;
+  transition: color 0.4s ease;
+}
+
+.hero-profession {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-family: var(--nav-font);
+}
+
+.hero-content h1 {
+  font-family: var(--heading-font);
+  color: var(--heading-color);
+  font-size: 3.2rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+/* Pure CSS Typing Effect */
+.typing-text {
+  color: var(--accent-color);
+  position: relative;
+  display: inline-block;
+  transition: color 0.4s ease;
+}
+
+.typing-text::after {
+  content: "";
+  position: absolute;
+  right: -8px;
+  top: 10%;
+  height: 80%;
+  width: 3px;
+  background-color: var(--accent-color);
+  animation: blink 0.7s infinite alternate;
+}
+
+.hero-desc {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  opacity: 0.8;
+  margin-bottom: 35px;
+  max-width: 500px;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+@media (max-width: 430px) {
+  .hero-buttons {
+    justify-content: center;
+  }
+}
+
+.btn-elevated {
+  padding: 14px 35px;
+  background-color: var(--background-color);
+  color: var(--default-color);
+  font-weight: 600;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--box-shadow);
+  transition: all var(--transition-duration) ease;
+  text-decoration: none;
+}
+
+.btn-elevated:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--box-shadow-soft);
+  color: var(--accent-color);
+}
+
+.btn-inset {
+  padding: 14px 35px;
+  background-color: var(--background-color);
+  color: var(--default-color);
+  font-weight: 600;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--box-shadow-inset);
+  transition: all var(--transition-duration) ease;
+  text-decoration: none;
+}
+
+.btn-inset:hover {
+  color: var(--accent-color);
+}
+
+/* --- Right Side: Floating Image Frame --- */
+.hero-image-area {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 3D Inset Ellipse Frame */
+.hero-ellipse-frame {
+  width: 480px;
+  height: 480px;
+  background-color: var(--background-color);
+  border-radius: var(--radius-50);
+  box-shadow: var(--box-shadow-inset);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: floatAnim 6s ease-in-out infinite; 
+}
+
+.hero-img-container {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-50);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  border: 4px solid var(--background-color);
+}
+
+.hero-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Keyframes (Animations) --- */
+@keyframes blink {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes floatAnim {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* --- Responsive Layout --- */
+@media (max-width: 992px) {
+  .hero {
+    padding-top: 140px;
+  }
+  .hero-wrapper {
+    flex-direction: column-reverse; 
+    text-align: center;
+    gap: 50px;
+  }
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .hero-ellipse-frame {
+    width: 290px;
+    height: 290px;
+  }
+}
+
+/* Social Button Styles */
+.button-wrapper{
+  width: calc(var(--rounded-length) + 10px);
+  height: calc(var(--rounded-length) + 10px);
+}
+
+.buttons {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: fit-content;
+  width: fit-content;
+  transition: var(--transition-duration);
+}
+
+.buttons .button {
+  font-size: 1.4rem;
+  width: calc(var(--rounded-length) + 5px);
+  height: calc(var(--rounded-length) + 5px);
+}
+
+.buttons:hover {
+  position: absolute;
+}
+
+.buttons:hover .button {
+  box-shadow: var(--box-shadow);
+}
+
+.buttons:hover .main-button {
+  transition: box-shadow var(--transition-duration);
+  box-shadow: var(--box-shadow-inset);
+}
+
+.buttons .main-button,
+.buttons .social-btn{
+  display: grid;
+  place-items: center;
+  padding: 10px;
+  border: none;
+  border-radius: var(--radius-50);
+  background: var(--background-color);
+}
+
+.main-button {
+  position: relative;
+  font-size: 1.4rem;
+  z-index: 100;
+  width: calc(var(--rounded-length) + 10px);
+  height: calc(var(--rounded-length) + 10px);
+  color: var(--default-color);
+  box-shadow: var(--box-shadow);
+}
+
+.button {
+  position: absolute;
+  box-shadow: var(--box-shadow);
+  transition: box-shadow var(--transition-duration);
+}
+
+.buttons:hover .twitter-button {
+  translate: -35px -46px; 
+}
+
+.buttons:hover .facebook-button {
+  translate: 17px -55px; 
+}
+
+.buttons:hover .instagram-button {
+  translate: 58px -25px; 
+}
+
+.buttons:hover .youtube-button {
+  translate: 58px 25px; 
+}
+
+.buttons:hover .linkedin-button {
+  translate: 17px 55px; 
+}
+
+.buttons:hover .github-button {
+  translate: -35px 47px;
+}
+
+@media (max-width: 576px) {
+  .buttons:hover .twitter-button {
+    translate: 65px -15px; 
+  }
+
+  .buttons:hover .facebook-button {
+    translate: 65px 35px; 
+  }
+
+  .buttons:hover .instagram-button {
+    translate: 25px 70px; 
+  }
+
+  .buttons:hover .youtube-button {
+    translate: -25px 70px; 
+  }
+
+  .buttons:hover .linkedin-button {
+    translate: -65px 35px; 
+  }
+
+  .buttons:hover .github-button {
+    translate: -65px -15px;
+  }
+}
+
+/* Social Button Hover Styles */
+.social-btn:hover {
+  color: var(--white-color);
+}
+
+.twitter-x.social-btn:hover {
+  background: var(--twitter-x-color);
+}
+
+.facebook.social-btn:hover {
+  background: var(--facebook-color);
+}
+
+.instagram.social-btn:hover {
+  background: var(--instagram-color);
+}
+
+.youtube.social-btn:hover {
+  background: var(--youtube-color);
+}
+
+.linkedin.social-btn:hover {
+  background: var(--linkedin-color);
+}
+
+.github.social-btn:hover {
+  background: var(--github-color);
 }
