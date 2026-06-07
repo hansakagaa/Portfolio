@@ -768,8 +768,8 @@ th {
 .ss-container,
 .ss-container-fluid {
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 12px;
+  padding-left: 12px;
   margin-right: auto;
   margin-left: auto;
   box-sizing: border-box;
