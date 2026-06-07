@@ -140,6 +140,48 @@
   });
 
   /**
+   * Hero section
+   */
+  document.addEventListener("DOMContentLoaded", () => {
+    const words = ["Web Developer", "Aspiring Local Guide", "Barista", "Bartender", "Photographer"];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typingDelay = 150;
+    const erasingDelay = 70;
+    const newWordDelay = 2000;
+    const typedTextSpan = document.querySelector(".typing-text");
+
+    function type() {
+        if (!typedTextSpan) return;
+        
+        const currentWord = words[wordIndex];
+        
+        if (isDeleting) {
+            typedTextSpan.textContent = currentWord.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            typedTextSpan.textContent = currentWord.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        if (!isDeleting && charIndex === currentWord.length) {
+            isDeleting = true;
+            setTimeout(type, newWordDelay);
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            setTimeout(type, 500);
+        } else {
+            setTimeout(type, isDeleting ? erasingDelay : typingDelay);
+        }
+    }
+
+    setTimeout(type, 1000);
+  });
+
+
+  /**
    * Scroll top button
    */
   let scrollTop = document.querySelector('.scroll-top');
