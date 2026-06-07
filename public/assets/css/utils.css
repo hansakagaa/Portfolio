@@ -1,0 +1,84 @@
+@charset "UTF-8";
+/*!
+ * Utils CSS  v1.0 
+ * Copyright @ 2026 The Ashen Hansaka Authors
+ * Licensed under MIT
+ */
+
+/**
+ * =========================================================================
+ * GLOBAL TOOLTIP SYSTEM (CSS Styles)
+ * =========================================================================
+ * 
+ * DESCRIPTION:
+ * A lightweight, highly customizable tooltip system using CSS pseudo-elements 
+ * (`::after`) driven dynamically by HTML data attributes.
+ * Supports auto-wrapping for long descriptions.
+ * 
+ * USAGE FOR DEVELOPERS:
+ * Simply add the `data-tooltip` attribute with your desired text to any HTML element.
+ * 
+ * EXAMPLES:
+ * 1. Short Text (Buttons/Icons): 
+ *    <a href="#" data-tooltip="GitHub"></a>
+ * 
+ * 2. Long Text (Descriptions/Alerts):
+ *    <button data-tooltip="This action is irreversible and will permanently delete data.">Delete</button>
+ */
+
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 110%;
+  left: 150%;
+  transform: translateX(-50%) scale(0.85);
+  background-color: #e8e8e8;
+  color: #31344b;
+  padding: 8px 14px;
+  font-size: 13px;
+  line-height: 1.4;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  z-index: 99999;
+  width: max-content;
+  max-width: 260px;
+  white-space: normal;
+  word-wrap: break-word;
+  text-align: center;
+  transition:
+    opacity 0.15s ease-in-out,
+    transform 0.15s ease-in-out;
+}
+
+/* --- Hover States --- */
+[data-tooltip]:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+[data-tooltip].tooltip-down::after {
+  bottom: auto;
+  top: 135%;
+}
+
+[data-tooltip].tooltip-left::after {
+  left: 0;
+  transform: translateX(0) scale(0.85);
+}
+[data-tooltip].tooltip-left:hover::after {
+  transform: translateX(0) scale(1);
+}
+
+[data-tooltip].tooltip-right::after {
+  left: auto;
+  right: 0;
+  transform: translateX(0) scale(0.85);
+}
+[data-tooltip].tooltip-right:hover::after {
+  transform: translateX(0) scale(1);
+}
