@@ -143,7 +143,7 @@
    * Hero section
    */
   document.addEventListener("DOMContentLoaded", () => {
-    const words = ["Web Developer", "Aspiring Local Guide", "Barista", "Bartender", "Photographer"];
+    const words = ["Web Developer", "Local Guide", "Barista", "Bartender", "Photographer"];
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
