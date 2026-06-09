@@ -121,6 +121,13 @@ body.dark-theme {
   --github-color: #24292F;
 }
 
+/* portfolio custom variable */
+:root{
+  --popup--background-color: #0f101480;
+  --popup-box-shadow-color: #00000080;
+  --popup-box-shadow: 0 10px 30px var(--popup-box-shadow-color);
+}
+
 /* Smooth scroll */
 :root {
   scroll-behavior: smooth;
@@ -1481,4 +1488,121 @@ textarea.form-control {
   margin: 0;
   color: color-mix(in srgb, var(--default-color), transparent 50%);
   font-size: 1rem;
+}
+
+/*--------------------------------------------------------------
+# Resume Section
+--------------------------------------------------------------*/
+.timeline-container {
+  position: relative;
+  max-width: calc((var(--size-lg) *  9) + 8px);
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.timeline-line {
+  position: absolute;
+  left: var(--inset-xl);
+  top: 0;
+  height: 100%;
+  width: calc(var(--size-xs) / 10);
+  border-radius: calc(var(--radius-xs) / 4);
+  box-shadow: var(--box-shadow-inset);
+}
+
+/* Individual Timeline Item */
+.timeline-item {
+  position: relative;
+  margin-bottom: 50px;
+  padding-left: 70px;
+  opacity: 0.9 !important;
+  transition: opacity var(--transition-duration) ease;
+}
+
+.timeline-item:hover {
+  opacity: 1 !important;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: var(--inset-lg);
+  top: calc(var(--inset-lg) + var(--inset-xs));
+  width: calc((var(--size-xs) / 2) + 4px);
+  height: calc((var(--size-xs) / 2) + 4px);
+  border-radius: var(--radius-50);
+  background-color: var(--background-color);
+  box-shadow: var(--box-shadow);
+  border: calc(var(--border-width) * 3) solid var(--accent-color); 
+  z-index: 2;
+  transition: transform var(--transition-duration) ease, background-color var(--transition-duration) ease;
+}
+
+.timeline-item:hover .timeline-dot {
+  transform: scale(1.2);
+  background-color: var(--accent-color);
+  border-color: var(--background-color);
+}
+
+.timeline-content {
+  background-color: var(--background-color);
+  padding: 25px 30px;
+  border-radius: calc(var(--radius-sm) + 4px);
+  box-shadow: var(--box-shadow);
+  border: calc(var(--border-width)) solid var(--border-color);
+  transition: transform var(--transition-duration) ease, box-shadow var(--transition-duration) ease;
+}
+
+.timeline-item:hover .timeline-content {
+  transform: translateX(5px);
+  box-shadow: var(--box-shadow-soft);
+}
+
+.timeline-date {
+  display: inline-block;
+  color: var(--accent-color);
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.timeline-degree {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 5px 0;
+  color: var(--heading-color, inherit);
+}
+
+.timeline-institution {
+  font-weight: 500;
+  font-size: 1rem;
+  opacity: 0.8;
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
+.timeline-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.7;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .timeline-line {
+    left: var(--inset-lg);
+  }
+  .timeline-dot {
+    left: var(--inset-sm);
+  }
+  .timeline-item {
+    padding-left: 50px;
+    opacity: 1 !important;
+  }
+  .timeline-content {
+    padding: 20px;
+  }
+  .timeline-degree {
+    font-size: 1.2rem;
+  }
 }
