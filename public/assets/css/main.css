@@ -1723,3 +1723,83 @@ textarea.form-control {
   transform: translateY(-8px) scale(1.02);
   box-shadow: var(--box-shadow-soft);
 }
+
+/*--------------------------------------------------------------
+# Services Section Styles
+--------------------------------------------------------------*/
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 35px;
+  max-width: calc((var(--size-xl) * 11) + var(--size-sm));
+  margin: 0 auto;
+  padding: 10px;
+}
+
+/* Individual Service Card */
+.service-card {
+  background-color: var(--background-color);
+  padding: 40px 30px;
+  border-radius: calc(var(--radius-xs) * 3);
+  box-shadow: var(--box-shadow);
+  border: var(--border-width) solid rgba(255, 255, 255, 0.03);
+  text-align: center;
+  transition: transform var(--transition-duration) cubic-bezier(0.25, 1, 0.5, 1), box-shadow var(--transition-duration) ease;
+}
+
+/* Icon Container */
+.service-icon-box {
+  width: var(--size-md);
+  height: var(--size-md);
+  background-color: var(--background-color);
+  margin: 0 auto 25px auto;
+  border-radius: calc(var(--radius-sm) + 4px);
+  box-shadow: var(--box-shadow-inset); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-duration) ease;
+}
+
+.service-icon-box i {
+  font-size: 1.8rem;
+  color: var(--accent-color);
+}
+
+/* Card Titles */
+.service-card h3 {
+  font-family: var(--heading-font);
+  color: var(--heading-color);
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+/* Card Description */
+.service-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.75;
+  margin-bottom: 0;
+}
+
+/* --- Interactive Hover Effect --- */
+.service-card:hover {
+  transform: translateY(2px);
+  box-shadow: var(--box-shadow-inset);
+}
+
+.service-card:hover .service-icon-box {
+  transform: scale(1.05);
+  box-shadow: var(--box-shadow); 
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .services-grid {
+    gap: 25px;
+  }
+  .service-card {
+    padding: 30px 20px;
+  }
+}
