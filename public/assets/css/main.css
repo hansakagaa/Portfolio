@@ -1606,3 +1606,119 @@ textarea.form-control {
     font-size: 1.2rem;
   }
 }
+
+/*--------------------------------------------------------------
+# Portfolio Section
+--------------------------------------------------------------*/
+
+/* Lightbox Popup Styles */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--popup--background-color);
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-content {
+  max-width: 85%;
+  max-height: 85%;
+  border-radius: calc(var(--radius-sm) - 1px);
+  box-shadow: var(--popup-box-shadow-color);
+  transform: scale(0.9);
+  transition: transform var(--transition-duration) ease;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox.active .lightbox-content {
+  transform: scale(1.1);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: var(--inset-xl);
+  right: calc(var(--inset-xl) + 10px);
+  color: var(--surface-color);
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color var(--transition-duration) ease;
+}
+
+.lightbox-close:hover {
+  color: var(--primary-color);
+}
+
+/* Slider Section */
+.slider-section {
+  padding: 80px 0;
+  background-color: var(--background-color);
+  overflow: hidden; 
+  text-align: center;
+}
+
+.slider-title {
+  font-family: var(--heading-font);
+  color: var(--heading-color);
+  font-size: 2.3rem;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+}
+
+/* Container & Dragging Track */
+.slider-container {
+  width: 100%;
+  padding: 20px 0;
+  cursor: grab;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.slider-container::-webkit-scrollbar {
+  display: none; 
+}
+
+.slider-container:active {
+  cursor: grabbing;
+}
+
+.slider-track {
+  display: flex;
+  gap: 20px;
+  padding: 10px 40px;
+  width: max-content; 
+}
+
+/* Individual Photo Card */
+.photo-slide {
+  width: calc(var(--size-xs) * 8);
+  height: calc((var(--size-xl) * 4) + 4px);
+  background-color: var(--background-color);
+  padding: 12px;
+  border-radius: calc(var(--radius-xs) * 3);
+  box-shadow: var(--box-shadow);
+  transition: transform var(--transition-duration) cubic-bezier(0.25, 1, 0.5, 1), box-shadow var(--transition-duration) ease;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.photo-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+}
+
+.photo-slide:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--box-shadow-soft);
+}

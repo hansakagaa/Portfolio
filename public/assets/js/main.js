@@ -192,6 +192,77 @@
     }
   });
 
+  
+  /**
+   * Gallery Lightbox Popup
+   */
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('.slider-container');
+    const slides = document.querySelectorAll('.photo-slide');
+    const lightbox = document.getElementById('gallery-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.querySelector('.lightbox-close');
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    let isDragging = false; 
+
+    container.addEventListener('mousedown', (e) => {
+        isDown = true;
+        isDragging = false;
+        startX = e.pageX - container.offsetLeft;
+        scrollLeft = container.scrollLeft;
+    });
+
+    container.addEventListener('mouseleave', () => {
+        isDown = false;
+    });
+
+    container.addEventListener('mouseup', () => {
+        isDown = false;
+    });
+
+    container.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - container.offsetLeft;
+        const walk = (x - startX) * 1.5; 
+        
+        if (Math.abs(walk) > 5) {
+            isDragging = true;
+        }
+        container.scrollLeft = scrollLeft - walk;
+    });
+
+    slides.forEach(slide => {
+        slide.addEventListener('click', () => {
+            if (isDragging) return; 
+
+            const img = slide.querySelector('img');
+            if (img && lightbox && lightboxImg) {
+                lightboxImg.src = img.src;
+                lightbox.classList.add('active');
+                
+                if (typeof scrollTop !== 'undefined' && scrollTop) {
+                    scrollTop.style.boxShadow = "var(--box-shadow-inset)";
+                }
+            }
+        });
+    });
+
+    if (lightboxClose) {
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+    }
+    if (lightbox) {
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {lightbox.classList.remove('active');}
+        });
+    }
+  });
+ 
 
   /**
    * Scroll top button
