@@ -1183,17 +1183,18 @@ textarea.form-control {
   height: calc(var(--size-xs) + 5px);
 }
 
-.buttons:hover {
+.buttons.active {
   position: absolute;
 }
 
-.buttons:hover .button {
+.buttons.active .button {
   box-shadow: var(--box-shadow);
 }
 
-.buttons:hover .main-button {
-  transition: box-shadow var(--transition-duration);
+.buttons.active .main-button {
+  font-size: 2rem;
   box-shadow: var(--box-shadow-inset);
+  transition: all var(--transition-duration) var(--transition-easing);
 }
 
 .buttons .main-button,
@@ -1223,52 +1224,52 @@ textarea.form-control {
   transition: box-shadow var(--transition-duration);
 }
 
-.buttons:hover .twitter-button {
+.buttons.active .twitter-button {
   translate: -35px -46px; 
 }
 
-.buttons:hover .facebook-button {
+.buttons.active .facebook-button {
   translate: 17px -55px; 
 }
 
-.buttons:hover .instagram-button {
+.buttons.active .instagram-button {
   translate: 58px -25px; 
 }
 
-.buttons:hover .youtube-button {
+.buttons.active .youtube-button {
   translate: 58px 25px; 
 }
 
-.buttons:hover .linkedin-button {
+.buttons.active .linkedin-button {
   translate: 17px 55px; 
 }
 
-.buttons:hover .github-button {
+.buttons.active .github-button {
   translate: -35px 47px;
 }
 
 @media (max-width: 576px) {
-  .buttons:hover .twitter-button {
+  .buttons.active .twitter-button {
     translate: 65px -15px; 
   }
 
-  .buttons:hover .facebook-button {
+  .buttons.active .facebook-button {
     translate: 65px 35px; 
   }
 
-  .buttons:hover .instagram-button {
+  .buttons.active .instagram-button {
     translate: 25px 70px; 
   }
 
-  .buttons:hover .youtube-button {
+  .buttons.active .youtube-button {
     translate: -25px 70px; 
   }
 
-  .buttons:hover .linkedin-button {
+  .buttons.active .linkedin-button {
     translate: -65px 35px; 
   }
 
-  .buttons:hover .github-button {
+  .buttons.active .github-button {
     translate: -65px -15px;
   }
 }

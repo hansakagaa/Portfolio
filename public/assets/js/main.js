@@ -180,7 +180,41 @@
     setTimeout(type, 1000);
   });
 
+  /**
+   * Hero social buttons toggle
+  */
+  const socialContainer = document.getElementById('social-btn');
+  const toggleBtn = document.querySelector('.social-toggle');
+
+  const toggleMenu = (e) => {
+    e.stopPropagation(); 
     
+    const isActive = socialContainer.classList.toggle('active');
+    
+    if (isActive) {
+      toggleBtn.classList.replace('bi-share-fill', 'bi-x');
+    } else {
+      toggleBtn.classList.replace('bi-x', 'bi-share-fill');
+    }
+  };
+
+  const closeMenu = () => {
+    if (socialContainer.classList.contains('active')) {
+      socialContainer.classList.remove('active');
+      toggleBtn.classList.replace('bi-x', 'bi-share-fill');
+    }
+  };
+
+  toggleBtn.addEventListener('click', toggleMenu);
+
+  document.addEventListener('click', (e) => {
+    if (!socialContainer.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  window.addEventListener('scroll', closeMenu, { passive: true }); 
+
   /**
    * Initiate Pure Counter
    */
