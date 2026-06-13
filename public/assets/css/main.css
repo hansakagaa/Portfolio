@@ -40,42 +40,52 @@
 }
 
 /* Global Colors */
+/**
+ * * DESCRIPTION:
+ * Handles seamless theme switching with dynamic surface depth (3 Layers).
+ * * 3-LAYER DEPTH SYSTEM:
+ * 1. Sunken (--surface-sunken)   : Darkest layer for inset slots/inputs.
+ * 2. Base (--surface-main)       : The default background level.
+ * 3. Elevated (--surface-elevated): Lightest layer for floating cards/buttons.
+ */
 :root {
-  --background-color: #e8e8e8;
+  --surface-sunken: #e8e8e8;
+  --surface-main: #e8e8e8;
+  --surface-elevated: #e8e8e8;
   --default-color: #31344b;
   --heading-color: #31344b;
   --accent-color: #31344b;
-  --surface-color: #ffffff;
+  --action-el-color: #ffffff;
   --contrast-color: #001eff;
   --box-shadow-color: #b8b9be;
-  --border-color: #f3f7fa0d;
   --success-color: #07a743;
   --danger-color: #ff142b;
   --primary-color: #385ae1;
   --white-color: #ffffff;
   --border-color: #d1d9e6;
-  --box-shadow: 5px 5px 12px var(--box-shadow-color), -5px -5px 12px var(--surface-color);
-  --box-shadow-inset: inset 4px 4px 9px var(--box-shadow-color), inset -4px -4px 9px var(--surface-color);
-  --box-shadow-soft: 10px 10px 24px var(--box-shadow-color), -10px -10px 24px var(--surface-color);
+  --box-shadow: 5px 5px 12px var(--box-shadow-color), -5px -5px 12px var(--action-el-color);
+  --box-shadow-inset: inset 4px 4px 9px var(--box-shadow-color), inset -4px -4px 9px var(--action-el-color);
+  --box-shadow-soft: 10px 10px 24px var(--box-shadow-color), -10px -10px 24px var(--action-el-color);
 }
 
 body.dark-theme{
-  --background-color: #1e1f26;
+  --surface-sunken: #18181e;
+  --surface-main: #1e1f26;
+  --surface-elevated: #24252b;
   --default-color: #c9cbcf;
   --heading-color: #f1f2f4;
   --accent-color: #4d6ef6;
-  --surface-color: #2a2c36;
+  --action-el-color: #1c1d21;
   --contrast-color: #637eff;
   --box-shadow-color: #121317;
-  --border-color: #ffffff0a;
   --success-color: #10b9818f;
   --danger-color: #ef44448f;
   --primary-color: #4d6ef6;
   --white-color: #ffffff;
   --border-color: #2a2c36;
-  --box-shadow: 5px 5px 12px var(--box-shadow-color), -5px -5px 12px var(--surface-color);
-  --box-shadow-inset: inset 4px 4px 9px var(--box-shadow-color), inset -4px -4px 9px var(--surface-color);
-  --box-shadow-soft: 10px 10px 24px var(--box-shadow-color), -10px -10px 24px var(--surface-color);
+  --box-shadow: 5px 5px 12px var(--box-shadow-color), -5px -5px 12px var(--action-el-color);
+  --box-shadow-inset: inset 4px 4px 9px var(--box-shadow-color), inset -4px -4px 9px var(--action-el-color);
+  --box-shadow-soft: 10px 10px 24px var(--box-shadow-color), -10px -10px 24px var(--action-el-color);
 }
 
 /* header Custom Variables */
@@ -94,7 +104,7 @@ body.dark-theme{
 
 body.dark-theme {
   --theme-box-shadow-color: #cbd5e1;
-  --theme-box-shadow: 0 4px 10px var(--background-color), inset -10px -10px 0px var(--theme-box-shadow-color);
+  --theme-box-shadow: 0 4px 10px var(--surface-main), inset -10px -10px 0px var(--theme-box-shadow-color);
 }
 
 /* Slider Custom Variables */
@@ -132,7 +142,7 @@ body.dark-theme{
 
 /* portfolio custom variable */
 :root{
-  --popup--background-color: #0f101480;
+  --popup-background-color: #0f101480;
   --popup-box-shadow-color: #00000080;
   --popup-box-shadow: 0 10px 30px var(--popup-box-shadow-color);
 }
@@ -157,7 +167,7 @@ body.dark-theme{
   min-height: 100vh;
   scroll-behavior: smooth;
   color: var(--default-color);
-  background-color: var(--background-color);
+  background-color: var(--surface-main);
   font-family: var(--default-font);
 }
 
@@ -191,14 +201,29 @@ img {
 
 .shadow-inset {
   box-shadow: var(--box-shadow-inset) !important;
+  background-color: var(--surface-sunken) !important;
 }
 
 .shadow-soft {
   box-shadow: var(--box-shadow-soft) !important;
+  background-color: var(--surface-elevated) !important;
 }
 
 .shadow {
   box-shadow: var(--box-shadow) !important;
+  background-color: var(--surface-elevated) !important;
+}
+
+.bg-sunken {
+  background-color: var(--surface-sunken) !important;
+}
+
+.bg-elevated {
+  background-color: var(--surface-elevated) !important;
+}
+
+.bg-main {
+  background-color: var(--surface-main) !important;
 }
 
 .alert {
@@ -211,7 +236,7 @@ img {
   font-size: 0.875rem;
   border: var(--border-width) solid var(--border-color);
   box-shadow: var(--box-shadow-soft);
-  background: var(--background-color);
+  background: var(--surface-elevated);
 }
 
 .color-primary {
@@ -234,7 +259,7 @@ img {
   color: var(--accent-color);
   border-color: var(--border-color);
   box-shadow: var(--box-shadow);
-  background-color: var(--background-color);
+  background-color: var(--surface-elevated);
   line-height: 1.5;
   border-radius: var(--radius-sm);
   border: var(--border-width) solid transparent;
@@ -270,6 +295,7 @@ img {
   opacity: 0.6;
   color: var(--default-color);
   box-shadow: var(--box-shadow-inset);
+  background-color: var(--surface-sunken);
 }
 
 .close{
@@ -306,7 +332,7 @@ img {
 
 @media (max-width: 1199px) {
   .header {
-    background-color: var(--background-color);
+    background-color: var(--surface-elevated);
     border-right: var(--border-width) solid
       color-mix(in srgb, var(--default-color), transparent 80%);
     box-shadow: var(--box-shadow-soft) !important;
@@ -326,7 +352,7 @@ img {
 
 .header .header-toggle {
   color: var(--accent-color);
-  background-color: var(--background-color);
+  background-color: var(--surface-elevated);
   font-size: var(--header-font-size);
   display: flex;
   align-items: center;
@@ -345,7 +371,7 @@ img {
 
 .header .header-toggle:hover {
   color: var(--contrast-color);
-  background-color: color-mix(in srgb, var(--background-color) 90%, var(--white-color) 15%);
+  background-color: color-mix(in srgb, var(--surface-sunken) 90%, var(--white-color) 15%);
   box-shadow: var(--box-shadow-inset);
 }
 
@@ -375,7 +401,7 @@ img {
   margin-bottom: 8px;
   font-size: 15px;
   border-radius: calc(var(--radius-lg) + 2px);
-  background: var(--background-color);
+  background: var(--surface-elevated);
   height: var(--size-sm);
   width: 100%;
   overflow: hidden;
@@ -410,7 +436,7 @@ img {
 .nav-menu .active:focus,
 .nav-menu li:hover > a {
   color: var(--contrast-color);
-  background: var(--background-color);
+  background: var(--surface-sunken);
   box-shadow: var(--box-shadow-inset);
 }
 
@@ -439,7 +465,7 @@ img {
   border-radius: calc((var(--radius-lg) * 2) + 4px);
   z-index: 9999;
   box-shadow: var(--box-shadow);
-  border: calc(var(--border-width) * 3) solid var(--background-color);
+  border: calc(var(--border-width) * 3) solid var(--surface-elevated);
 }
 
 .toggle-wrapper input {
@@ -450,7 +476,7 @@ img {
   position: relative;
   width: calc(var(--size-xs) * 2);
   height: var(--size-xs);
-  background-color: var(--background-color);
+  background-color: var(--surface-sunken);
   border-radius: calc((var(--radius-lg) * 2) + 4px);
   box-shadow: var(--box-shadow-inset);
   transition: background-color 0.5s ease;
@@ -494,7 +520,7 @@ img {
   bottom: calc(var(--inset-xl) - var(--inset-xs));
   width: calc(var(--size-sm) - 31px);
   height: calc(var(--size-xs) / 4);
-  background: var(--surface-color);
+  background: var(--action-el-color);
   border-radius: calc(var(--radius-sm) + 4px);
   box-shadow: var(--box-shadow);
 }
@@ -502,7 +528,7 @@ img {
 .cloud-element::after {
   content: "";
   position: absolute;
-  background: var(--surface-color);
+  background: var(--action-el-color);
   border-radius: var(--radius-50);
 }
 .cloud-element::before {
@@ -570,12 +596,12 @@ img {
 #  ANIMATION LOGIC (When Checkbox is Checked)
 --------------------------------------------------------------*/
 input:checked + .toggle-slot {
-  background-color: var(--background-color);
+  background-color: var(--surface-main);
 }
 
 input:checked + .toggle-slot .sun-moon-node {
   transform: translateX(80px);
-  background-color: var(--background-color);
+  background-color: var(--surface-main);
   box-shadow: var(--theme-box-shadow);
 }
 
@@ -597,7 +623,7 @@ input:checked + .toggle-slot .stars-wrapper {
   inset: 0;
   z-index: 999999;
   overflow: hidden;
-  background: var(--background-color);
+  background: var(--surface-main);
   transition: all calc(var(--transition-duration) * 3) var(--transition-easing);
 }
 
@@ -629,7 +655,7 @@ input:checked + .toggle-slot .stars-wrapper {
 --------------------------------------------------------------*/
 .footer {
   color: var(--default-color);
-  background-color: var(--background-color);
+  background-color: var(--surface-main);
   font-size: 14px;
   text-align: center;
   padding: 30px 0;
@@ -661,7 +687,7 @@ input:checked + .toggle-slot .stars-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--background-color);
+  background: var(--surface-elevated);
   color: var(--contrast-color);
   line-height: 1;
   margin: 0 4px;
@@ -702,7 +728,7 @@ input:checked + .toggle-slot .stars-wrapper {
   right: var(--inset-md);
   bottom: calc(var(--inset-md) * -1);
   z-index: 99999;
-  background-color: var(--background-color);
+  background-color: var(--surface-elevated);
   width: calc(var(--size-xs) + 5px);
   height: calc(var(--size-xs) + 5px);
   border-radius: var(--radius-50);
@@ -719,6 +745,7 @@ input:checked + .toggle-slot .stars-wrapper {
 .scroll-top:hover {
   color: var(--contrast-color);
   box-shadow: var(--box-shadow-inset);
+  background-color: var(--surface-sunken);
 }
 
 .scroll-top.active {
@@ -733,7 +760,7 @@ input:checked + .toggle-slot .stars-wrapper {
 section,
 .section {
   color: var(--default-color);
-  background-color: var(--background-color);
+  background-color: var(--surface-main);
   padding: 60px 0;
   overflow: clip;
 }
@@ -799,7 +826,7 @@ section,
   font-weight: var(--form-font-weight);
   line-height: var(--form-line-height);
   color: var(--default-color);
-  background-color: var(--background-color);
+  background-color: var(--surface-sunken);
   background-clip: padding-box;
   border: var(--border-width) solid var(--border-color);
   border-radius: var(--radius-xs);
@@ -846,7 +873,7 @@ textarea.form-control {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: var(--background-color);
+  background-color: var(--surface-main);
   background-clip: border-box;
   border: var(--border-width) solid var(--border-color);
   border-radius: var(--radius-xs);
@@ -896,6 +923,7 @@ textarea.form-control {
 .contact .info-item:hover .icon {
   color: var(--contrast-color);
   box-shadow: var(--box-shadow-inset);
+  background-color: var(--surface-sunken);
 }
 
 .contact .email-form {
@@ -925,6 +953,7 @@ textarea.form-control {
   .email-form
   button[type="submit"]:hover:not(:disabled):not(.disabled) {
   box-shadow: var(--box-shadow-inset);
+  background-color: var(--surface-sunken);
   color: var(--contrast-color);
   cursor: pointer;
 }
@@ -942,7 +971,7 @@ textarea.form-control {
 
 .email-form .loading {
   display: none;
-  background: var(--background-color);
+  background: var(--surface-main);
   color: color-mix(in srgb, var(--default-color), transparent 40%);
   text-align: center;
   padding: 15px;
@@ -957,7 +986,7 @@ textarea.form-control {
   height: calc(var(--size-sm) / 2 - 3px);
   margin: 0 10px -6px 0;
   border: calc(var(--border-width) * 3) solid color-mix(in srgb, var(--accent-color), transparent 30%);
-  border-top-color: var(--background-color);
+  border-top-color: var(--surface-main);
   animation: email-form-loading 1s linear infinite;
 }
 
@@ -976,7 +1005,7 @@ textarea.form-control {
 --------------------------------------------------------------*/
 .hero {
   padding: 120px 20px 80px 20px;
-  background-color: var(--background-color);
+  background-color: var(--surface-main);
   min-height: 50vh;
   display: flex;
   align-items: center;
@@ -1066,7 +1095,7 @@ textarea.form-control {
 
 .btn-elevated {
   padding: 14px 35px;
-  background-color: var(--background-color);
+  background-color: var(--surface-elevated);
   color: var(--default-color);
   font-weight: 600;
   border-radius: var(--radius-sm);
@@ -1083,7 +1112,7 @@ textarea.form-control {
 
 .btn-inset {
   padding: 14px 35px;
-  background-color: var(--background-color);
+  background-color: var(--surface-sunken);
   color: var(--default-color);
   font-weight: 600;
   border-radius: var(--radius-sm);
@@ -1108,7 +1137,7 @@ textarea.form-control {
 .hero-ellipse-frame {
   width: calc(var(--size-xs) * 12);
   height: calc(var(--size-xs) * 12);
-  background-color: var(--background-color);
+  background-color: var(--surface-sunken);
   border-radius: var(--radius-50);
   box-shadow: var(--box-shadow-inset);
   display: flex;
@@ -1124,7 +1153,7 @@ textarea.form-control {
   border-radius: var(--radius-50);
   overflow: hidden;
   box-shadow: var(--box-shadow);
-  border: calc(var(--border-width) * 4) solid var(--background-color);
+  border: calc(var(--border-width) * 4) solid var(--surface-elevated);
 }
 
 .hero-img-container img {
@@ -1211,6 +1240,7 @@ textarea.form-control {
 .buttons.active .main-button {
   font-size: 2rem;
   box-shadow: var(--box-shadow-inset);
+  background-color: var(--surface-sunken);
   transition: all var(--transition-duration) var(--transition-easing);
 }
 
@@ -1221,7 +1251,7 @@ textarea.form-control {
   padding: 10px;
   border: none;
   border-radius: var(--radius-50);
-  background: var(--background-color);
+  background: var(--surface-elevated);
 }
 
 .main-button {
@@ -1233,6 +1263,10 @@ textarea.form-control {
   height: calc(var(--size-sm) - 6px);
   color: var(--default-color);
   box-shadow: var(--box-shadow);
+}
+
+.buttons:hover:not(.buttons.active) .main-button{
+  color: var(--accent-color);
 }
 
 .button {
@@ -1368,7 +1402,7 @@ textarea.form-control {
 .profile-card {
   width: calc(var(--size-xs) * 8);
   height: calc(var(--size-xs) * 8);
-  background-color: var(--background-color);
+  background-color: var(--surface-sunken);
   padding: 15px;
   border-radius: calc(var(--radius-md) - 2px);
   box-shadow: var(--box-shadow-inset); 
@@ -1426,7 +1460,7 @@ textarea.form-control {
 }
 
 .badge-item {
-  background-color: var(--background-color);
+  background-color: var(--surface-elevated);
   color: var(--default-color);
   padding: 10px 20px;
   font-family: var(--nav-font);
@@ -1446,6 +1480,7 @@ textarea.form-control {
 
 .badge-item:hover {
   box-shadow: var(--box-shadow-inset);
+  background-color: var(--surface-sunken);
   color: var(--accent-color);
   transform: translateY(1px);
 }
@@ -1484,7 +1519,7 @@ textarea.form-control {
   font-size: 2.25rem;
   border: var(--border-width) solid var(--border-color);
   border-radius: var(--radius-50);
-  background-color: var(--background-color);
+  background-color: var(--surface-elevated);
   box-shadow: var(--box-shadow-soft);
   transition: all var(--transition-duration) ease;
   position: relative;
@@ -1575,7 +1610,7 @@ textarea.form-control {
   width: calc((var(--size-xs) / 2) + 4px);
   height: calc((var(--size-xs) / 2) + 4px);
   border-radius: var(--radius-50);
-  background-color: var(--background-color);
+  background-color: var(--surface-elevated);
   box-shadow: var(--box-shadow);
   border: calc(var(--border-width) * 3) solid var(--accent-color); 
   z-index: 2;
@@ -1585,11 +1620,11 @@ textarea.form-control {
 .timeline-item:hover .timeline-dot {
   transform: scale(1.2);
   background-color: var(--accent-color);
-  border-color: var(--background-color);
+  border-color: var(--surface-elevated);
 }
 
 .timeline-content {
-  background-color: var(--background-color);
+  background-color: var(--surface-elevated);
   padding: 25px 30px;
   border-radius: calc(var(--radius-sm) + 4px);
   box-shadow: var(--box-shadow);
@@ -1664,7 +1699,7 @@ textarea.form-control {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--popup--background-color);
+  background-color: var(--popup-background-color);
   align-items: center;
   justify-content: center;
 }
@@ -1690,7 +1725,7 @@ textarea.form-control {
   position: absolute;
   top: var(--inset-xl);
   right: calc(var(--inset-xl) + 10px);
-  color: var(--surface-color);
+  color: var(--action-el-color);
   font-size: 40px;
   font-weight: bold;
   cursor: pointer;
@@ -1704,7 +1739,7 @@ textarea.form-control {
 /* Slider Section */
 .slider-section {
   padding: 80px 0;
-  background-color: var(--background-color);
+  background-color: var(--surface-main);
   overflow: hidden; 
   text-align: center;
 }
@@ -1745,7 +1780,7 @@ textarea.form-control {
 .photo-slide {
   width: calc(var(--size-xs) * 8);
   height: calc((var(--size-xl) * 4) + 4px);
-  background-color: var(--background-color);
+  background-color: var(--surface-elevated);
   padding: 12px;
   border-radius: calc(var(--radius-xs) * 3);
   box-shadow: var(--box-shadow);
@@ -1781,7 +1816,7 @@ textarea.form-control {
 
 /* Individual Service Card */
 .service-card {
-  background-color: var(--background-color);
+  background-color: var(--surface-elevated);
   padding: 40px 30px;
   border-radius: calc(var(--radius-xs) * 3);
   box-shadow: var(--box-shadow);
@@ -1794,7 +1829,7 @@ textarea.form-control {
 .service-icon-box {
   width: var(--size-md);
   height: var(--size-md);
-  background-color: var(--background-color);
+  background-color: var(--surface-sunken);
   margin: 0 auto 25px auto;
   border-radius: calc(var(--radius-sm) + 4px);
   box-shadow: var(--box-shadow-inset); 
@@ -1830,11 +1865,13 @@ textarea.form-control {
 .service-card:hover {
   transform: translateY(2px);
   box-shadow: var(--box-shadow-inset);
+  background-color: var(--surface-sunken);
 }
 
 .service-card:hover .service-icon-box {
   transform: scale(1.05);
   box-shadow: var(--box-shadow); 
+  background-color: var(--surface-elevated);
 }
 
 /* Responsive */
@@ -1884,7 +1921,7 @@ textarea.form-control {
   position: absolute;
   width: calc(var(--size-xs) * 7.25);
   height: calc(var(--size-xs) * 4.75);
-  background-color: var(--background-color);
+  background-color: var(--surface-elevated);
   border-radius: var(--radius-sm);
   box-shadow: var(--box-shadow-soft);
   display: flex;
@@ -1986,7 +2023,7 @@ textarea.form-control {
   text-align: center;
   text-wrap: pretty;
   position: relative;
-  background-color: var(--background-color);
+  background-color: var(--surface-sunken);
   border-radius: calc(var(--radius-xs) + 2px);
   box-shadow: var(--box-shadow-inset);
   box-sizing: border-box; 
@@ -2038,7 +2075,7 @@ textarea.form-control {
 .nav-btn {
   width: calc(var(--size-sm) - 10px);
   height: calc(var(--size-sm) - 10px);
-  background-color: var(--background-color);
+  background-color: var(--surface-elevated);
   border: none;
   border-radius: var(--radius-50);
   color: var(--default-color);
@@ -2080,7 +2117,7 @@ textarea.form-control {
   width: calc(var(--size-sm) / 3);
   height: calc(var(--size-sm) / 3);
   border-radius: var(--radius-50);
-  background-color: var(--background-color);
+  background-color: var(--surface-elevated);
   border: none;
   box-shadow: var(--box-shadow);
   cursor: pointer;
