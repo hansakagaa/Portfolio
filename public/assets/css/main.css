@@ -1059,14 +1059,9 @@ textarea.form-control {
 
 .hero-buttons {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  align-items: center;
   gap: 20px;
-}
-
-@media (max-width: 430px) {
-  .hero-buttons {
-    justify-content: center;
-  }
 }
 
 .btn-elevated {
@@ -1172,6 +1167,16 @@ textarea.form-control {
     width: calc((var(--size-sm) * 5) + 10px);
     height: calc((var(--size-sm) * 5) + 10px);
   }
+  .hero-buttons{ 
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-buttons {
+    flex-wrap: wrap;
+    justify-content: center; 
+  }
 }
 
 /* Social Button Styles */
@@ -1237,52 +1242,78 @@ textarea.form-control {
 }
 
 .buttons.active .twitter-button {
-  translate: -35px -46px; 
+  translate: -35px -48px; 
 }
 
 .buttons.active .facebook-button {
-  translate: 17px -55px; 
+  translate: 15px -58px; 
 }
 
 .buttons.active .instagram-button {
-  translate: 58px -25px; 
+  translate: 55px -25px; 
 }
 
 .buttons.active .youtube-button {
-  translate: 58px 25px; 
+  translate: 55px 25px; 
 }
 
 .buttons.active .linkedin-button {
-  translate: 17px 55px; 
+  translate: 15px 58px; 
 }
 
 .buttons.active .github-button {
-  translate: -35px 47px;
+  translate: -35px 48px;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 539px) {
   .buttons.active .twitter-button {
     translate: 65px -15px; 
   }
 
   .buttons.active .facebook-button {
-    translate: 65px 35px; 
+    translate: 60px 30px; 
   }
 
   .buttons.active .instagram-button {
-    translate: 25px 70px; 
+    translate: 24px 62px; 
   }
 
   .buttons.active .youtube-button {
-    translate: -25px 70px; 
+    translate: -24px 62px; 
   }
 
   .buttons.active .linkedin-button {
-    translate: -65px 35px; 
+    translate: -60px 30px; 
   }
 
   .buttons.active .github-button {
     translate: -65px -15px;
+  }
+}
+
+@media (max-width: 374px) {
+  .buttons.active .twitter-button {
+    translate: 9px -63px; 
+  }
+
+  .buttons.active .facebook-button {
+    translate: 50px -40px; 
+  }
+
+  .buttons.active .instagram-button {
+    translate: 64px 5px; 
+  }
+
+  .buttons.active .youtube-button {
+    translate: 44px 47px; 
+  }
+
+  .buttons.active .linkedin-button {
+    translate: 0px 64px; 
+  }
+
+  .buttons.active .github-button {
+    translate: -45px 47px;
   }
 }
 
