@@ -5,6 +5,40 @@
  * Licensed under MIT
  */
 
+ /**
+ * =========================================================================
+ * GLOBAL THEMING & CSS VARIABLES SYSTEM
+ * =========================================================================
+ * * DESCRIPTION:
+ * A centralized, dynamic theme management system driven by CSS Custom Properties 
+ * (Variables). Handles seamless switching between Light and Dark modes.
+ * * CUSTOMIZATION FOR DEVELOPERS:
+ * This system is completely flexible and framework-agnostic. To adapt this to ANY 
+ * new project, simply swap the Hex color codes and Box-Shadow values inside 
+ * the `:root` (Light Theme) and dark theme selectors to match your brand colors.
+ * * ⚠️ IMPORTANT NOTE ON DARK THEME CLASS:
+ * By default, this system targets the `body.dark-theme` class to trigger dark mode. 
+ * If your specific project uses a different class name for dark mode (e.g., `body.dark-mode`, 
+ * `body.theme-dark`, or just `.dark`), make sure to replace `body.dark-theme` 
+ * with your project's specific class name throughout the stylesheet.
+ * * USAGE IN CSS:
+ * Always use `var(--variable-name)` instead of hardcoded values to ensure reactivity.
+ * * EXAMPLES:
+ * background-color: var(--background-color);
+ */
+ 
+:root {
+  --background-color: #e8e8e8;
+  --default-color: #31344b;
+  --tooltip-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme{
+  --background-color: #1e1f26;
+  --default-color: #c9cbcf;
+  --tooltip-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
 /**
  * =========================================================================
  * GLOBAL TOOLTIP SYSTEM (CSS Styles)
@@ -36,15 +70,15 @@
   bottom: 110%;
   left: 150%;
   transform: translateX(-50%) scale(0.85);
-  background-color: #e8e8e8;
-  color: #31344b;
+  background-color: var(--background-color);
+  color: var(--default-color);
   padding: 8px 14px;
   font-size: 13px;
   line-height: 1.4;
   border-radius: 6px;
   opacity: 0;
   pointer-events: none;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--tooltip-box-shadow);
   z-index: 99999;
   width: max-content;
   max-width: 260px;
