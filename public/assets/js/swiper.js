@@ -433,7 +433,7 @@ initSlider();
 let timeRunning = 1000; 
 let timeAutoNext = 7000;
 let runTimeOut;
-// let runNextAuto = setTimeout(() => { nextBtn.click(); }, timeAutoNext);
+let runNextAuto = setTimeout(() => { nextBtn.click(); }, timeAutoNext);
 
 function showSlider(type) {
     let mainItems = document.querySelectorAll('.main-slider .main-item');
@@ -461,8 +461,8 @@ function showSlider(type) {
         timeRunningBar.style.animation = 'runningBar 7s linear 1 forwards';
     }
 
-    // clearTimeout(runNextAuto);
-    // runNextAuto = setTimeout(() => { nextBtn.click(); }, timeAutoNext);
+    clearTimeout(runNextAuto);
+    runNextAuto = setTimeout(() => { nextBtn.click(); }, timeAutoNext);
 }
 
 nextBtn.addEventListener('click', () => showSlider('next'));
