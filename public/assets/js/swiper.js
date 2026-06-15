@@ -372,3 +372,98 @@ window.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("reduced-motion");
   }
 });
+
+/**
+// Gallery Slider ---------------
+ */
+
+const MAIN_SLIDE = [
+  { name: "EAGLE", img: "https://u.cubeupload.com/Leo21/eagel1.jpg", des: "Eagles are majestic birds of prey..." },
+  { name: "OWL", img: "https://u.cubeupload.com/Leo21/owl1.jpg", des: "Owls are nocturnal birds of prey..." },
+  { name: "CROW", img: "https://u.cubeupload.com/Leo21/crow.jpg", des: "Crows are highly intelligent..." },
+  { name: "BUTTERFLY", img: "https://u.cubeupload.com/Leo21/butterfly1.jpeg", des: "Butterflies, with their vibrant wings..." },
+  { name: "OWL", img: "https://u.cubeupload.com/Leo21/owl2.jpg", des: "Owls have long been associated..." },
+  { name: "EAGLE", img: "https://u.cubeupload.com/Leo21/eagel3.jpg", des: "Eagles represent freedom..." },
+  { name: "KINGFISHER", img: "https://u.cubeupload.com/Leo21/kingfirser2.jpeg", des: "Kingfishers, with their dazzling..." },
+  { name: "PARROT", img: "https://u.cubeupload.com/Leo21/parrot2.jpg", des: "Parrots are social creatures..." },
+  { name: "HERON", img: "https://u.cubeupload.com/Leo21/heron.jpeg", des: "Herons are known for their striking..." },
+  { name: "BUTTERFLY", img: "https://u.cubeupload.com/Leo21/butterfly2.jpg", des: "Butterflies, with their delicate..." },
+  { name: "PARROT", img: "https://u.cubeupload.com/Leo21/parrot1.jpg", des: "Parrots are known for their long..." }
+];
+
+const mainSlider = document.querySelector('.main-slider');
+const thumbnailWrapper = document.querySelector('.thumbnail-wrapper');
+const nextBtn = document.querySelector('#slide-next');
+const prevBtn = document.querySelector('#slide-prev');
+const carousel = document.querySelector('.carousel');
+const timeRunningBar = document.querySelector('.timeRunning');
+
+function initSlider() {
+    mainSlider.innerHTML = '';
+    thumbnailWrapper.innerHTML = '';
+
+    MAIN_SLIDE.forEach((slide, index) => {
+        let mainItem = document.createElement('div');
+        mainItem.classList.add('main-item');
+        mainItem.style.backgroundImage = `url('${slide.img}')`;
+        mainItem.setAttribute('data-index', index);
+        mainItem.innerHTML = `
+          <div class="content">
+            <div class="item-header">${slide.name}</div>
+            <div class="item-des">${slide.des}</div>
+          </div>
+        `;
+        mainSlider.appendChild(mainItem);
+    });
+
+    for (let i = 2; i < MAIN_SLIDE.length; i++) { createThumb(MAIN_SLIDE[i]); }
+    createThumb(MAIN_SLIDE[0]);
+    createThumb(MAIN_SLIDE[1]);
+}
+
+function createThumb(slide) {
+    let thumbItem = document.createElement('div');
+    thumbItem.classList.add('thumb-item');
+    thumbItem.style.backgroundImage = `url('${slide.img}')`;
+    thumbnailWrapper.appendChild(thumbItem);
+}
+
+initSlider();
+
+let timeRunning = 1000; 
+let timeAutoNext = 7000;
+let runTimeOut;
+// let runNextAuto = setTimeout(() => { nextBtn.click(); }, timeAutoNext);
+
+function showSlider(type) {
+    let mainItems = document.querySelectorAll('.main-slider .main-item');
+    let thumbItems = document.querySelectorAll('.thumbnail-wrapper .thumb-item');
+
+    if (type === 'next') {
+        mainSlider.appendChild(mainItems[0]);
+        thumbnailWrapper.appendChild(thumbItems[0]);
+        carousel.classList.add('next');
+    } else {
+        mainSlider.prepend(mainItems[mainItems.length - 1]);
+        thumbnailWrapper.prepend(thumbItems[thumbItems.length - 1]);
+        carousel.classList.add('prev');
+    }
+
+    clearTimeout(runTimeOut);
+    runTimeOut = setTimeout(() => {
+        carousel.classList.remove('next');
+        carousel.classList.remove('prev');
+    }, timeRunning);
+
+    if (timeRunningBar) {
+        timeRunningBar.style.animation = 'none';
+        timeRunningBar.offsetHeight; // Trigger Reflow
+        timeRunningBar.style.animation = 'runningBar 7s linear 1 forwards';
+    }
+
+    // clearTimeout(runNextAuto);
+    // runNextAuto = setTimeout(() => { nextBtn.click(); }, timeAutoNext);
+}
+
+nextBtn.addEventListener('click', () => showSlider('next'));
+prevBtn.addEventListener('click', () => showSlider('prev'));
