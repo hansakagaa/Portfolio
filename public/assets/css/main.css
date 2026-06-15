@@ -2373,6 +2373,7 @@ textarea.form-control {
   left: calc(var(--inset-sm) + 2px);
   bottom: calc(var(--inset-sm) + 2px);
   width: calc(100% - (var(--size-sm) / 2));
+  border-radius: 0 var(--radius-md);
   animation: runningBar 7s linear 1 forwards;
 }
 
