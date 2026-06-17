@@ -608,7 +608,7 @@
                         </div>
                       </div>
 
-                      <div class="ss-col-md-6  xs-mt-3" data-aos="fade-up" data-aos-delay="300" >
+                      <div class="ss-col-md-6 xs-mt-3" data-aos="fade-up" data-aos-delay="300" >
                         <div class="form-group">
                           <label for="contactEmail" class="d-none">Your Email</label>
                           <input type="email" class="form-control" name="email" id="contactEmail" aria-describedby="contactEmailHelp" placeholder="Your Email" required="">
@@ -616,7 +616,7 @@
                         </div>
                       </div>
 
-                      <div class="ss-col-md-6  xs-mt-3" data-aos="fade-up" data-aos-delay="300" >
+                      <div class="ss-col-md-6 xs-mt-3" data-aos="fade-up" data-aos-delay="300" >
                         <div class="form-group">
                           <label for="contactPhone" class="d-none">Your Phone</label>
                           <input type="tel" class="form-control" name="phone" id="contactPhone" aria-describedby="contactPhoneHelp" placeholder="Your Phone" required="">
@@ -628,7 +628,7 @@
                         <div class="form-group">
                           <label for="contactSubject" class="d-none">Subject</label>
                           <input type="text" class="form-control" name="subject" id="contactSubject" aria-describedby="contactSubjectHelp" placeholder="Subject" required="">
-                          <small id="contactSubjectHelp" class="form-text text-danger d-none">Subject cannot be left blank.</small>
+                          <small id="contactSubjectHelp" class="form-text text-danger d-none">Subject must be at least 5 characters.</small>
                         </div>
                       </div>
 
@@ -641,13 +641,15 @@
                       </div>
 
                       <div class="ss-col-md-12 xs-mt-3 text-center" data-aos="fade-up" data-aos-delay="600" >
-                        <div class="loading" id="contactLoading">Loading</div>
-                        <div class="alert color-danger error-message" data-dismiss="alert">
+                        <div class="loading" id="contactLoading" style="display: none;">Loading</div>
+                        
+                        <div class="alert color-danger error-message" data-dismiss="alert" style="display: none;">
                           <span id="contactErrorMessage"></span>
                           <button type="button" class="close" aria-label="Close"><i class="bi bi-x"></i></button>
                         </div>
-                        <div class="alert color-success sent-message" data-dismiss="alert">
-                         <span id="contactSentMessage">Your message has been sent. Thank you!</span>
+                        
+                        <div class="alert color-success sent-message" data-dismiss="alert" style="display: none;">
+                          <span id="contactSentMessage">Your message has been sent. Thank you!</span>
                           <button type="button" class="close" aria-label="Close"><i class="bi bi-x"></i></button>
                         </div>
 
