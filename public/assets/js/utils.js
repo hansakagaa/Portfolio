@@ -32,7 +32,22 @@
             const alertBox = closeButton.closest('[data-dismiss]');
 
             if (alertBox) {
-                alertBox.remove(); 
+                alertBox.style.transition = "opacity 0.3s ease-in-out, transform 0.3s ease-in-out";
+                
+                requestAnimationFrame(() => {
+                    alertBox.style.opacity = "0";
+                    alertBox.style.transform = "translateX(-25px) scale(0.95)";
+                });
+
+                alertBox.addEventListener('transitionend', function () {
+                    alertBox.remove();
+                }, { once: true });
+
+                setTimeout(() => {
+                    if (alertBox.parentNode) {
+                        alertBox.remove();
+                    }
+                }, 350);
             }
         }
     });
