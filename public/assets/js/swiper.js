@@ -383,7 +383,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 /**
 // Gallery Slider ---------------
- */
+*/
 
 const MAIN_SLIDE = [
   { name: "EAGLE", img: "https://u.cubeupload.com/Leo21/eagel1.jpg", des: "Eagles are majestic birds of prey..." },
@@ -438,10 +438,55 @@ function createThumb(slide) {
 
 initSlider();
 
+// --- Smart Dynamic Timer Settings ---
 let timeRunning = 1000; 
 let timeAutoNext = 7000;
 let runTimeOut;
-let runNextAuto = setTimeout(() => { nextBtn.click(); }, timeAutoNext);
+
+let timeLeft = timeAutoNext;
+let timerStartTime;
+let runNextAuto;
+let isSliderVisible = false;
+
+function startAutoNext() {
+    if (!isSliderVisible) return;
+    
+    timerStartTime = Date.now();
+    runNextAuto = setTimeout(() => { 
+        nextBtn.click(); 
+    }, timeLeft);
+
+    if (timeRunningBar) {
+        timeRunningBar.style.animationPlayState = 'running';
+    }
+}
+
+function pauseAutoNext() {
+    if (runNextAuto) {
+        clearTimeout(runNextAuto);
+        let elapsed = Date.now() - timerStartTime;
+        timeLeft -= elapsed;
+        if (timeLeft < 0) timeLeft = 0;
+    }
+    
+    if (timeRunningBar) {
+        timeRunningBar.style.animationPlayState = 'paused';
+    }
+}
+
+function resetAutoNext() {
+    clearTimeout(runNextAuto);
+    timeLeft = timeAutoNext;
+
+    if (timeRunningBar) {
+        timeRunningBar.style.animation = 'none';
+        timeRunningBar.offsetHeight; // Trigger Reflow
+        timeRunningBar.style.animation = 'runningBar 7s linear 1 forwards';
+        timeRunningBar.style.animationPlayState = 'running';
+    }
+
+    startAutoNext();
+}
 
 function showSlider(type) {
     let mainItems = document.querySelectorAll('.main-slider .main-item');
@@ -463,15 +508,42 @@ function showSlider(type) {
         carousel.classList.remove('prev');
     }, timeRunning);
 
-    if (timeRunningBar) {
-        timeRunningBar.style.animation = 'none';
-        timeRunningBar.offsetHeight; // Trigger Reflow
-        timeRunningBar.style.animation = 'runningBar 7s linear 1 forwards';
-    }
-
-    clearTimeout(runNextAuto);
-    runNextAuto = setTimeout(() => { nextBtn.click(); }, timeAutoNext);
+    resetAutoNext();
 }
 
 nextBtn.addEventListener('click', () => showSlider('next'));
 prevBtn.addEventListener('click', () => showSlider('prev'));
+
+// Arrow Keys Feature (With Viewport Check) ---
+document.addEventListener('keydown', function (e) {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+
+    if (carousel) {
+        const rect = carousel.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        if (!isVisible) return;
+    }
+
+    if (e.key === "ArrowRight") {
+        nextBtn.click();
+    } else if (e.key === "ArrowLeft") {
+        prevBtn.click();
+    }
+});
+
+// Intersection Observer (Smart Pause & Resume) ---
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            isSliderVisible = true;
+            startAutoNext();
+        } else {
+            pauseAutoNext();
+            isSliderVisible = false;
+        }
+    });
+}, { threshold: 0.1 });
+
+if (carousel) {
+    observer.observe(carousel);
+}
