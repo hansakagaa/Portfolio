@@ -407,33 +407,33 @@ const carousel = document.querySelector('.carousel');
 const timeRunningBar = document.querySelector('.timeRunning');
 
 function initSlider() {
-    mainSlider.innerHTML = '';
-    thumbnailWrapper.innerHTML = '';
+  mainSlider.innerHTML = '';
+  thumbnailWrapper.innerHTML = '';
 
-    MAIN_SLIDE.forEach((slide, index) => {
-        let mainItem = document.createElement('div');
-        mainItem.classList.add('main-item');
-        mainItem.style.backgroundImage = `url('${slide.img}')`;
-        mainItem.setAttribute('data-index', index);
-        mainItem.innerHTML = `
-          <div class="content">
-            <div class="item-header">${slide.name}</div>
-            <div class="item-des">${slide.des}</div>
-          </div>
-        `;
-        mainSlider.appendChild(mainItem);
-    });
+  MAIN_SLIDE.forEach((slide, index) => {
+    let mainItem = document.createElement('div');
+    mainItem.classList.add('main-item');
+    mainItem.style.backgroundImage = `url('${slide.img}')`;
+    mainItem.setAttribute('data-index', index);
+    mainItem.innerHTML = `
+      <div class="content">
+        <div class="item-header">${slide.name}</div>
+        <div class="item-des">${slide.des}</div>
+      </div>
+    `;
+    mainSlider.appendChild(mainItem);
+  });
 
-    for (let i = 2; i < MAIN_SLIDE.length; i++) { createThumb(MAIN_SLIDE[i]); }
-    createThumb(MAIN_SLIDE[0]);
-    createThumb(MAIN_SLIDE[1]);
+  for (let i = 2; i < MAIN_SLIDE.length; i++) { createThumb(MAIN_SLIDE[i]); }
+  createThumb(MAIN_SLIDE[0]);
+  createThumb(MAIN_SLIDE[1]);
 }
 
 function createThumb(slide) {
-    let thumbItem = document.createElement('div');
-    thumbItem.classList.add('thumb-item');
-    thumbItem.style.backgroundImage = `url('${slide.img}')`;
-    thumbnailWrapper.appendChild(thumbItem);
+  let thumbItem = document.createElement('div');
+  thumbItem.classList.add('thumb-item');
+  thumbItem.style.backgroundImage = `url('${slide.img}')`;
+  thumbnailWrapper.appendChild(thumbItem);
 }
 
 initSlider();
@@ -449,66 +449,66 @@ let runNextAuto;
 let isSliderVisible = false;
 
 function startAutoNext() {
-    if (!isSliderVisible) return;
-    
-    timerStartTime = Date.now();
-    runNextAuto = setTimeout(() => { 
-        nextBtn.click(); 
-    }, timeLeft);
+  if (!isSliderVisible) return;
+  
+  timerStartTime = Date.now();
+  runNextAuto = setTimeout(() => { 
+    nextBtn.click(); 
+  }, timeLeft);
 
-    if (timeRunningBar) {
-        timeRunningBar.style.animationPlayState = 'running';
-    }
+  if (timeRunningBar) {
+    timeRunningBar.style.animationPlayState = 'running';
+  }
 }
 
 function pauseAutoNext() {
-    if (runNextAuto) {
-        clearTimeout(runNextAuto);
-        let elapsed = Date.now() - timerStartTime;
-        timeLeft -= elapsed;
-        if (timeLeft < 0) timeLeft = 0;
-    }
+  if (runNextAuto) {
+    clearTimeout(runNextAuto);
+    let elapsed = Date.now() - timerStartTime;
+    timeLeft -= elapsed;
+    if (timeLeft < 0) timeLeft = 0;
+  }
     
-    if (timeRunningBar) {
-        timeRunningBar.style.animationPlayState = 'paused';
-    }
+  if (timeRunningBar) {
+    timeRunningBar.style.animationPlayState = 'paused';
+  }
 }
 
 function resetAutoNext() {
-    clearTimeout(runNextAuto);
-    timeLeft = timeAutoNext;
+  clearTimeout(runNextAuto);
+  timeLeft = timeAutoNext;
 
-    if (timeRunningBar) {
-        timeRunningBar.style.animation = 'none';
-        timeRunningBar.offsetHeight; // Trigger Reflow
-        timeRunningBar.style.animation = 'runningBar 7s linear 1 forwards';
-        timeRunningBar.style.animationPlayState = 'running';
-    }
+  if (timeRunningBar) {
+    timeRunningBar.style.animation = 'none';
+    timeRunningBar.offsetHeight; // Trigger Reflow
+    timeRunningBar.style.animation = 'runningBar 7s linear 1 forwards';
+    timeRunningBar.style.animationPlayState = 'running';
+  }
 
-    startAutoNext();
+  startAutoNext();
 }
 
 function showSlider(type) {
-    let mainItems = document.querySelectorAll('.main-slider .main-item');
-    let thumbItems = document.querySelectorAll('.thumbnail-wrapper .thumb-item');
+  let mainItems = document.querySelectorAll('.main-slider .main-item');
+  let thumbItems = document.querySelectorAll('.thumbnail-wrapper .thumb-item');
 
-    if (type === 'next') {
-        mainSlider.appendChild(mainItems[0]);
-        thumbnailWrapper.appendChild(thumbItems[0]);
-        carousel.classList.add('next');
-    } else {
-        mainSlider.prepend(mainItems[mainItems.length - 1]);
-        thumbnailWrapper.prepend(thumbItems[thumbItems.length - 1]);
-        carousel.classList.add('prev');
-    }
+  if (type === 'next') {
+    mainSlider.appendChild(mainItems[0]);
+    thumbnailWrapper.appendChild(thumbItems[0]);
+    carousel.classList.add('next');
+  } else {
+    mainSlider.prepend(mainItems[mainItems.length - 1]);
+    thumbnailWrapper.prepend(thumbItems[thumbItems.length - 1]);
+    carousel.classList.add('prev');
+  }
 
-    clearTimeout(runTimeOut);
-    runTimeOut = setTimeout(() => {
-        carousel.classList.remove('next');
-        carousel.classList.remove('prev');
-    }, timeRunning);
+  clearTimeout(runTimeOut);
+  runTimeOut = setTimeout(() => {
+    carousel.classList.remove('next');
+    carousel.classList.remove('prev');
+  }, timeRunning);
 
-    resetAutoNext();
+  resetAutoNext();
 }
 
 nextBtn.addEventListener('click', () => showSlider('next'));
@@ -516,34 +516,34 @@ prevBtn.addEventListener('click', () => showSlider('prev'));
 
 // Arrow Keys Feature (With Viewport Check) ---
 document.addEventListener('keydown', function (e) {
-    if (e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.altKey || e.ctrlKey || e.metaKey) return;
 
-    if (carousel) {
-        const rect = carousel.getBoundingClientRect();
-        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-        if (!isVisible) return;
-    }
+  if (carousel) {
+    const rect = carousel.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+    if (!isVisible) return;
+  }
 
-    if (e.key === "ArrowRight") {
-        nextBtn.click();
-    } else if (e.key === "ArrowLeft") {
-        prevBtn.click();
-    }
+  if (e.key === "ArrowRight") {
+    nextBtn.click();
+  } else if (e.key === "ArrowLeft") {
+    prevBtn.click();
+  }
 });
 
 // Intersection Observer (Smart Pause & Resume) ---
 const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            isSliderVisible = true;
-            startAutoNext();
-        } else {
-            pauseAutoNext();
-            isSliderVisible = false;
-        }
-    });
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      isSliderVisible = true;
+      startAutoNext();
+    } else {
+      pauseAutoNext();
+      isSliderVisible = false;
+    }
+  });
 }, { threshold: 0.1 });
 
 if (carousel) {
-    observer.observe(carousel);
+  observer.observe(carousel);
 }
