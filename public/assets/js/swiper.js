@@ -273,6 +273,14 @@ class StellarNavigator {
 
   handleKey(e) {
     if (e.altKey || e.ctrlKey || e.metaKey) return;
+
+    if (this.testimonialsEl) {
+      const rect = this.testimonialsEl.getBoundingClientRect();
+      
+      const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+      if (!isVisible) return;
+    }
+
     switch (e.key) {
       case "ArrowRight":
         this.next();
