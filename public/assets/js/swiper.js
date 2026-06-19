@@ -412,7 +412,7 @@ function initSlider() {
 
   MAIN_SLIDE.forEach((slide, index) => {
     let mainItem = document.createElement('div');
-    mainItem.classList.add('main-item');
+    mainItem.classList.add('main-item', 'ss-skeleton');
     mainItem.style.backgroundImage = `url('${slide.img}')`;
     mainItem.setAttribute('data-index', index);
     mainItem.innerHTML = `
@@ -421,6 +421,14 @@ function initSlider() {
         <div class="item-des">${slide.des}</div>
       </div>
     `;
+
+    let imgLoader = new Image();
+    imgLoader.src = slide.img;
+    imgLoader.onload = () => {
+      mainItem.style.backgroundImage = `url('${slide.img}')`;
+      mainItem.classList.remove('ss-skeleton');
+    };
+
     mainSlider.appendChild(mainItem);
   });
 
@@ -431,8 +439,16 @@ function initSlider() {
 
 function createThumb(slide) {
   let thumbItem = document.createElement('div');
-  thumbItem.classList.add('thumb-item');
+  thumbItem.classList.add('thumb-item', 'ss-skeleton');
   thumbItem.style.backgroundImage = `url('${slide.img}')`;
+
+  let imgLoader = new Image();
+  imgLoader.src = slide.img;
+  imgLoader.onload = () => {
+    thumbItem.style.backgroundImage = `url('${slide.img}')`;
+    thumbItem.classList.remove('ss-skeleton');
+  };
+
   thumbnailWrapper.appendChild(thumbItem);
 }
 

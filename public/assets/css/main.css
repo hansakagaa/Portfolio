@@ -170,6 +170,37 @@ body.dark-theme {
   color-scheme: light dark;
 }
 
+/* Skeleton Shimmer Animation */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.ss-skeleton {
+  background: linear-gradient(90deg, 
+    var(--surface-main) 25%, 
+    var(--action-el-color) 50%, 
+    var(--surface-main) 75%
+  ) !important;
+  background-size: 200% 100% !important;
+  animation: shimmer 1.5s infinite linear !important;
+  border-color: transparent !important;
+  color: transparent !important;
+}
+
+.ss-skeleton * {
+  visibility: hidden !important;
+}
+
+body.dark-theme .ss-skeleton {
+  background: linear-gradient(90deg, 
+    var(--surface-main) 25%, 
+    var(--surface-elevated) 50%, 
+    var(--surface-main) 75%
+  ) !important;
+  background-size: 200% 100% !important;
+}
+
 /*--------------------------------------------------------------
 # General Styling & Shared Classes
 --------------------------------------------------------------*/
@@ -746,17 +777,43 @@ input:checked + .toggle-slot .stars-wrapper {
   bottom: calc(var(--inset-md) * -1);
   z-index: 99999;
   background-color: var(--surface-elevated);
-  width: calc(var(--size-xs) + 5px);
-  height: calc(var(--size-xs) + 5px);
+  width: calc(var(--size-xs) + 15px);
+  height: calc(var(--size-xs) + 15px);
   border-radius: var(--radius-50);
   transition: all var(--transition-duration);
   box-shadow: var(--box-shadow);
+}
+
+.progress-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+
+.progress-ring__bg {
+  stroke: rgba(0, 0, 0, 0.08);
+  stroke-width: 4;
+}
+
+.progress-ring__circle {
+  stroke: var(--accent-color);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 0.1s ease-out;
 }
 
 .scroll-top i {
   font-size: 30px;
   color: var(--accent-color);
   line-height: 0;
+  position: relative;
+  z-index: 2;
 }
 
 .scroll-top:hover {
@@ -769,6 +826,20 @@ input:checked + .toggle-slot .stars-wrapper {
   visibility: visible;
   opacity: 1;
   bottom: var(--inset-md);
+}
+
+/*--------------------------------------------------------------
+# Scroll progress bar
+--------------------------------------------------------------*/
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 4px;
+  background: linear-gradient(to right, var(--accent-color), var(--accent-color));
+  z-index: 99999;
+  transition: width 0.1s ease-out;
 }
 
 /*--------------------------------------------------------------

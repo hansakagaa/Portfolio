@@ -27,6 +27,9 @@
   </head>
   <body class="index-page" id="index-page">
 
+    <!-- Scroll progress bar -->
+    <div id="scroll-progress"></div>
+
     <!-- Popup (Lightbox) -->
     <div id="gallery-lightbox" class="lightbox">
       <span class="lightbox-close"><i class="bi bi-x"></i></span>
@@ -691,7 +694,13 @@
     </footer>
     
     <!-- Scroll Top -->
-    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+      <svg class="progress-ring" width="100%" height="100%" viewBox="0 0 100 100">
+        <circle class="progress-ring__bg" cx="50" cy="50" r="46" fill="none" />
+        <circle class="progress-ring__circle" cx="50" cy="50" r="46" fill="none" pathLength="100" />
+      </svg>
+      <i class="bi bi-arrow-up-short"></i>
+    </a>
 
     <!-- Preloader -->
     <div id="preloader"></div>

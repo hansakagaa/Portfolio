@@ -310,15 +310,23 @@
  
 
   /**
-   * Scroll top button
+   * Scroll top button with Dynamic Progress Ring
    */
   let scrollTop = document.querySelector('.scroll-top');
+  let progressCircle = document.querySelector('.progress-ring__circle');
 
   function toggleScrollTop() {
     if (scrollTop) {
       window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
+      
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight > 0 && progressCircle) {
+        const progress = (window.scrollY / totalHeight) * 100;
+        progressCircle.style.strokeDashoffset = 100 - progress;
+      }
     }
   }
+
   scrollTop.addEventListener('click', (e) => {
     e.preventDefault();
     window.scrollTo({
@@ -329,6 +337,36 @@
 
   window.addEventListener('load', toggleScrollTop);
   document.addEventListener('scroll', toggleScrollTop);
+
+  /**
+   * Scrolling position bar.
+   */
+  window.addEventListener('scroll', () => {
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (totalHeight > 0) {
+      const progress = (window.scrollY / totalHeight) * 100;
+      document.getElementById('scroll-progress').style.width = `${progress}%`;
+    }
+  });
+
+  /**
+   * Skeleton Shimmer Animation
+   */
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("img").forEach(img => {
+        if (!img.complete) {
+            img.classList.add("ss-skeleton");
+            
+            img.addEventListener("load", () => {
+                img.classList.remove("ss-skeleton");
+            });
+            
+            img.addEventListener("error", () => {
+                img.classList.remove("ss-skeleton");
+            });
+        }
+    });
+  });
 
   /**
    * Correct scrolling position upon page load for URLs containing hash links.
