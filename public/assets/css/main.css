@@ -842,6 +842,34 @@ input:checked + .toggle-slot .stars-wrapper {
   transition: width 0.1s ease-out;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: var(--surface-main);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-sunken);
+  box-shadow: var(--box-shadow-inset) !important;
+  border-radius: 50px;
+  margin: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--surface-main);
+  border-radius: 50px;
+  border: 2px solid var(--surface-sunken);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--surface-elevated);
+  cursor: grab;
+}
+
+::-webkit-scrollbar-thumb:active {
+  cursor: grabbing;
+}
+
 /*--------------------------------------------------------------
 # Global Sections
 --------------------------------------------------------------*/
