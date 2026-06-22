@@ -89,4 +89,34 @@
         });
     });
 
+    /**
+     * =========================================================================
+     * GLOBAL MAGNETIC BUTTON SYSTEM (JS CORE)
+     * =========================================================================
+     * * DESCRIPTION:
+     * Calculates the exact dynamic distance between the mouse pointer and the 
+     * center point of the button, applying a fractional translation to create the pull effect.
+     */
+
+    document.addEventListener("DOMContentLoaded", () => {
+        
+        document.querySelectorAll('[data-magnetic]').forEach(btn => {
+            
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                
+                const x = e.clientX - (rect.left + rect.width / 2);
+                const y = e.clientY - (rect.top + rect.height / 2);
+
+                const pullStrength = 0.35; 
+
+                btn.style.transform = `translate(${x * pullStrength}px, ${y * pullStrength}px)`;
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0px, 0px)';
+            });
+        });
+    });
+
 })();

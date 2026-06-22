@@ -5,7 +5,7 @@
  * Licensed under MIT
  */
 
- /**
+/**
  * =========================================================================
  * GLOBAL THEMING & CSS VARIABLES SYSTEM
  * =========================================================================
@@ -26,17 +26,18 @@
  * * EXAMPLES:
  * background-color: var(--background-color);
  */
- 
+
 :root {
   --background-color: #e8e8e8;
   --default-color: #31344b;
   --tooltip-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-body.dark-theme{
+body.dark-theme {
   --background-color: #1e1f26;
   --default-color: #c9cbcf;
-  --tooltip-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), 0 12px 24px rgba(0, 0, 0, 0.4);
+  --tooltip-box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.3), 0 12px 24px rgba(0, 0, 0, 0.4);
 }
 
 /**
@@ -115,4 +116,27 @@ body.dark-theme{
 }
 [data-tooltip].tooltip-right:hover::after {
   transform: translateX(0) scale(1);
+}
+
+/**
+ * =========================================================================
+ * GLOBAL MAGNETIC BUTTON SYSTEM (CSS STYLES)
+ * =========================================================================
+ * * DESCRIPTION:
+ * Handles the structural layer of the magnetic system, defining hardware
+ * acceleration and smooth transition animations when entering/leaving hover bounds.
+ */
+
+[data-magnetic] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  will-change: transform;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+[data-magnetic]:hover {
+  transition: transform 0.1s ease-out;
+  z-index: 10;
 }
