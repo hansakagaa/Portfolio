@@ -31,13 +31,14 @@
   --background-color: #e8e8e8;
   --default-color: #31344b;
   --tooltip-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --ripple-box-shadow: rgba(255, 255, 255, 0.5);
 }
 
 body.dark-theme {
   --background-color: #1e1f26;
   --default-color: #c9cbcf;
-  --tooltip-box-shadow:
-    0 4px 6px rgba(0, 0, 0, 0.3), 0 12px 24px rgba(0, 0, 0, 0.4);
+  --tooltip-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), 0 12px 24px rgba(0, 0, 0, 0.4);
+  --ripple-box-shadow: rgba(0, 0, 0, 0.25);
 }
 
 /**
@@ -169,7 +170,6 @@ body.dark-theme {
 }
 
 [data-press="true"]:active {
-  box-shadow: var(--box-shadow-inset) !important;
   transform: scale(0.98) !important;
 }
 
@@ -209,11 +209,7 @@ body.dark-theme {
   transform: scale(0);
   animation: ripple-animation 0.6s linear;
   pointer-events: none;
-  background-color: rgba(255, 255, 255, 0.5); 
-}
-
-body.dark-theme .custom-ripple-span {
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: var(--ripple-box-shadow); 
 }
 
 @keyframes ripple-animation {
