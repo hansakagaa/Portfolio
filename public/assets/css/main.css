@@ -980,6 +980,19 @@ textarea.form-control {
   background-size: calc(0.4875rem + 0.6rem) calc(0.4875rem + 0.6rem);
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill {
+  -webkit-text-fill-color: var(--default-color) !important;
+  background-color: var(--surface-sunken) !important;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: var(--default-color);
+}
+
 /*--------------------------------------------------------------
 # Card & Box Sizing Classes
 --------------------------------------------------------------*/
@@ -1055,8 +1068,12 @@ textarea.form-control {
 .contact .email-form input[type="tel"]:focus-visible,
 .contact .email-form textarea:focus,
 .contact .email-form textarea:focus-visible {
-  border-color: color-mix(in srgb, var(--border-color), transparent 60%);
+  border-color: color-mix(in srgb, var(--primary-color), transparent 60%);
   outline: 0;
+  box-shadow: 
+    inset 4px 4px 9px var(--box-shadow-color),
+    inset -4px -4px 9px var(--action-el-color),
+    0 0 12px rgba(77, 110, 246, 0.4) !important; 
 }
 
 .contact .email-form input[type="text"]::placeholder,
