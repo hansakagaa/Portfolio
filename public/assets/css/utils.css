@@ -125,9 +125,16 @@ body.dark-theme {
  * * DESCRIPTION:
  * Handles the structural layer of the magnetic system, defining hardware
  * acceleration and smooth transition animations when entering/leaving hover bounds.
+ *
+ * USAGE FOR DEVELOPERS:
+ * Simply add the `data-magnetic` attribute with your desired text to any HTML element.
+ * 
+ * EXAMPLES:
+ * 1. Short Text (Buttons/Icons): 
+ *    <a href="#" data-magnetic="true"></a>
  */
 
-[data-magnetic] {
+[data-magnetic="true"] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -136,7 +143,82 @@ body.dark-theme {
   transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-[data-magnetic]:hover {
+[data-magnetic="true"]:hover {
   transition: transform 0.1s ease-out;
   z-index: 10;
+}
+
+/**
+ * =========================================================================
+ * GLOBAL TACTILE PRESS EFFECT (CSS ONLY)
+ * =========================================================================
+ * * DESCRIPTION:
+ * Inverts the shadow from raised to inset instantly upon click,
+ * creating an extremely satisfying physical "push-button" feedback.
+ *
+ * USAGE FOR DEVELOPERS:
+ * Simply add the `data-press` attribute with your desired text to any HTML element.
+ * 
+ * EXAMPLES:
+ * 1. Short Text (Buttons/Icons): 
+ *    <a href="#" data-press="true"></a>
+ */
+
+[data-press="true"] {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+[data-press="true"]:active {
+  box-shadow: var(--box-shadow-inset) !important;
+  transform: scale(0.98) !important;
+}
+
+/**
+ * =========================================================================
+ * GLOBAL RIPPLE EFFECT (CSS STYLES)
+ * =========================================================================
+ * * DESCRIPTION:
+ * A dynamic, material-inspired click ripple animation that generates an expanding 
+ * radial wave from the exact coordinates of a user's mouse click. It utilizes a 
+ * temporary child span element driven by JavaScript and animated via CSS keyframes 
+ * to create a smooth, organic touch feedback.
+ *
+ * * USAGE FOR DEVELOPERS:
+ * Simply add the `data-ripple` attribute to any clickable HTML element.
+ * Ensure the global ripple JavaScript handler is loaded to dynamically inject 
+ * and position the ripple span on click events.
+ *
+ * * EXAMPLES:
+ * 1. Standard Interactive Button: 
+ *    <button class="btn" data-ripple="true">Submit Form</button>
+ *
+ * * 2. Full-Card Click Feedback:
+ *    <div class="portfolio-card tilt-card" data-ripple="true">
+ *     <h3>View Project</h3>
+ *    </div>
+ */
+
+[data-ripple="true"] {
+  position: relative;
+  overflow: hidden;
+}
+
+.custom-ripple-span {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple-animation 0.6s linear;
+  pointer-events: none;
+  background-color: rgba(255, 255, 255, 0.5); 
+}
+
+body.dark-theme .custom-ripple-span {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
 }

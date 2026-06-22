@@ -103,8 +103,11 @@
         document.querySelectorAll('[data-magnetic]').forEach(btn => {
             
             btn.addEventListener('mousemove', (e) => {
+
+                if (btn.getAttribute('data-magnetic') !== 'true') return;
+
                 const rect = btn.getBoundingClientRect();
-                
+
                 const x = e.clientX - (rect.left + rect.width / 2);
                 const y = e.clientY - (rect.top + rect.height / 2);
 
@@ -115,6 +118,44 @@
 
             btn.addEventListener('mouseleave', () => {
                 btn.style.transform = 'translate(0px, 0px)';
+            });
+        });
+    });
+
+    /**
+     * =========================================================================
+     * GLOBAL RIPPLE EFFECT (JS CORE)
+     * =========================================================================
+     * Automatically applies a Material Design ripple effect to any element
+     * containing the `data-ripple="true"` attribute.
+     *
+     * Core Workflow:
+     * 1. Uses Event Delegation on document.body for optimal memory performance.
+     * 2. Dynamically computes exact click coordinates relative to the element.
+     * 3. Injects a temporary ripple span and triggers the scale animation.
+     * 4. Auto-cleans the DOM via 'animationend' to prevent memory leaks.
+     */
+    
+    document.addEventListener("DOMContentLoaded", () => {
+        document.body.addEventListener("click", (e) => {
+            const target = e.target.closest("[data-ripple='true']");
+            if (!target) return;
+
+            const ripple = document.createElement("span");
+            ripple.classList.add("custom-ripple-span");
+
+            const diameter = Math.max(target.clientWidth, target.clientHeight);
+            const radius = diameter / 2;
+
+            ripple.style.width = ripple.style.height = `${diameter}px`;
+
+            const rect = target.getBoundingClientRect();
+            ripple.style.left = `${e.clientX - rect.left - radius}px`;
+            ripple.style.top = `${e.clientY - rect.top - radius}px`;
+
+            target.appendChild(ripple);
+            ripple.addEventListener("animationend", () => {
+                ripple.remove();
             });
         });
     });
