@@ -8,8 +8,8 @@
   "use strict";
 
   /* *
-  * Header toggle
-  */
+   * Header toggle
+   */
   const header = document.getElementById('header');
   const headerToggleBtn = document.querySelector('.header-toggle');
   const headerCloserBtn = document.querySelector('.header-closer');
@@ -193,7 +193,7 @@
 
   /**
    * Hero social buttons toggle
-  */
+   */
   const socialContainer = document.getElementById('social-btn');
   const toggleBtn = document.querySelector('.social-toggle');
 
@@ -226,6 +226,34 @@
 
   window.addEventListener('scroll', closeMenu, { passive: true }); 
 
+  /**
+   * Hero section contact button scroll
+   */
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const talkBtn = document.getElementById('lets-talk-btn');
+    const nameInput = document.getElementById('contactName');
+
+    if (talkBtn && nameInput) {
+      talkBtn.addEventListener('click', (e) => {
+        e.preventDefault(); 
+
+        const targetSection = document.querySelector('#contact');
+        if (targetSection) {
+          targetSection.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+          });
+        }
+
+        setTimeout(() => {
+          nameInput.focus();
+        }, 600); 
+      });
+    }
+  });
+
+  
   /**
    * Initiate Pure Counter
    */
