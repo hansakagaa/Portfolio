@@ -49,28 +49,29 @@
  * 3. Elevated (--surface-elevated): Lightest layer for floating cards/buttons.
  */
 :root {
-  --surface-sunken: #e8e8e8;
-  --surface-main: #e8e8e8;
-  --surface-elevated: #e8e8e8;
+  --surface-sunken: #dfdddd;
+  --surface-main: #ebebeb; 
+  --surface-elevated: #f2f0f0;
   --default-color: #31344b;
   --heading-color: #31344b;
   --accent-color: #31344b;
   --action-el-color: #ffffff;
   --contrast-color: #001eff;
-  --box-shadow-color: #b8b9be;
+  --box-shadow-color-dark: #c2c2c2;
+  --box-shadow-color-light: #f1f2f4;
   --success-color: #07a743;
   --danger-color: #ff142b;
   --primary-color: #385ae1;
   --white-color: #ffffff;
   --border-color: #d1d9e6;
   --box-shadow:
-    5px 5px 12px var(--box-shadow-color), -5px -5px 12px var(--action-el-color);
+    5px 5px 12px var(--box-shadow-color-dark), -5px -5px 12px var(--box-shadow-color-light);
   --box-shadow-inset:
-    inset 4px 4px 9px var(--box-shadow-color),
-    inset -4px -4px 9px var(--action-el-color);
+    inset 4px 4px 9px var(--box-shadow-color-dark),
+    inset -4px -4px 9px var(--box-shadow-color-light);
   --box-shadow-soft:
-    10px 10px 24px var(--box-shadow-color),
-    -10px -10px 24px var(--action-el-color);
+    10px 10px 24px var(--box-shadow-color-dark),
+    -10px -10px 24px var(--box-shadow-color-light);
 }
 
 body.dark-theme {
@@ -82,20 +83,21 @@ body.dark-theme {
   --accent-color: #4d6ef6;
   --action-el-color: #1c1d21;
   --contrast-color: #637eff;
-  --box-shadow-color: #121317;
+  --box-shadow-color-dark: #121317;
+  --box-shadow-color-light: #1c1d21;
   --success-color: #10b9818f;
   --danger-color: #ef44448f;
   --primary-color: #4d6ef6;
   --white-color: #ffffff;
   --border-color: #2a2c36;
   --box-shadow:
-    5px 5px 12px var(--box-shadow-color), -5px -5px 12px var(--action-el-color);
+    5px 5px 12px var(--box-shadow-color-dark), -5px -5px 12px var(--box-shadow-color-light);
   --box-shadow-inset:
-    inset 4px 4px 9px var(--box-shadow-color),
-    inset -4px -4px 9px var(--action-el-color);
+    inset 4px 4px 9px var(--box-shadow-color-dark),
+    inset -4px -4px 9px var(--box-shadow-color-light);
   --box-shadow-soft:
-    10px 10px 24px var(--box-shadow-color),
-    -10px -10px 24px var(--action-el-color);
+    10px 10px 24px var(--box-shadow-color-dark),
+    -10px -10px 24px var(--box-shadow-color-light);
 }
 
 /* header Custom Variables */
@@ -1086,8 +1088,8 @@ select:-webkit-autofill {
   border-color: color-mix(in srgb, var(--primary-color), transparent 60%);
   outline: 0;
   box-shadow: 
-    inset 4px 4px 9px var(--box-shadow-color),
-    inset -4px -4px 9px var(--action-el-color),
+    inset 4px 4px 9px var(--box-shadow-color-dark),
+    inset -4px -4px 9px var(--box-shadow-color-light),
     0 0 12px rgba(77, 110, 246, 0.4) !important; 
 }
 
@@ -1944,6 +1946,7 @@ select:-webkit-autofill {
   height: calc((var(--size-xl) * 4) + 4px);
   background-color: var(--surface-elevated);
   padding: 12px;
+  border: calc(var(--border-width)) solid var(--border-color);
   border-radius: calc(var(--radius-xs) * 3);
   box-shadow: var(--box-shadow);
   transition:
@@ -1984,7 +1987,7 @@ select:-webkit-autofill {
   padding: 40px 30px;
   border-radius: calc(var(--radius-xs) * 3);
   box-shadow: var(--box-shadow);
-  border: var(--border-width) solid rgba(255, 255, 255, 0.03);
+  border: calc(var(--border-width)) solid var(--border-color);
   text-align: center;
   transition:
     transform var(--transition-duration) cubic-bezier(0.25, 1, 0.5, 1),
@@ -2002,6 +2005,7 @@ select:-webkit-autofill {
   display: flex;
   align-items: center;
   justify-content: center;
+  border: calc(var(--border-width)) solid var(--border-color);
   transition: transform var(--transition-duration) ease;
 }
 
@@ -2037,7 +2041,7 @@ select:-webkit-autofill {
 .service-card:hover .service-icon-box {
   transform: scale(1.05);
   box-shadow: var(--box-shadow);
-  background-color: var(--surface-elevated);
+  background-color: var(--surface-main);
 }
 
 /* Responsive */
@@ -2155,6 +2159,7 @@ select:-webkit-autofill {
 
 .testimonials-slide .slide-image img {
   border-radius: inherit;
+  box-shadow: var(--box-shadow);
 }
 
 .testimonials-slide .quote-icon-left,
@@ -2190,36 +2195,28 @@ select:-webkit-autofill {
   text-align: center;
   text-wrap: pretty;
   position: relative;
-  background-color: var(--surface-sunken);
+  background-color: var(--surface-main);
   border-radius: calc(var(--radius-xs) + 2px);
   box-shadow: var(--box-shadow-inset);
   box-sizing: border-box;
 }
 
 .testimonials-slide p::-webkit-scrollbar {
-  width: calc(var(--size-md) / 24);
+  width: calc(var(--size-xs) / 10);
 }
 
 .testimonials-slide p::-webkit-scrollbar-track {
-  background: transparent;
-  border-top: calc(var(--border-width) * 10) solid transparent;
-  border-bottom: calc(var(--border-width) * 10) solid transparent;
-  background-clip: padding-box;
+  background: var(--surface-sunken);
+  box-shadow: var(--box-shadow-inset) !important;
 }
 
 .testimonials-slide p::-webkit-scrollbar-thumb {
-  background-color: color-mix(in srgb, var(--accent-color), transparent 75%);
-  border-radius: var(--radius-sm);
-  border-top: calc(var(--border-width) * 10) solid transparent;
-  border-bottom: calc(var(--border-width) * 10) solid transparent;
-  background-clip: padding-box;
+  background: var(--surface-elevated);
+  border: 1px solid var(--surface-sunken);
 }
 
 .testimonials-slide p:hover::-webkit-scrollbar-thumb {
-  background-color: color-mix(in srgb, var(--accent-color), transparent 50%);
-  border-top: calc(var(--border-width) * 10) solid transparent;
-  border-bottom: calc(var(--border-width) * 10) solid transparent;
-  background-clip: padding-box;
+  background: var(--accent-color);
 }
 
 .testimonials-slide .testimonial-desc {
@@ -2362,6 +2359,7 @@ select:-webkit-autofill {
   background-color: var(--surface-main);
   border-radius: calc(var(--radius-xs) * 3);
   box-shadow: var(--box-shadow);
+  border: calc(var(--border-width)) solid var(--border-color);
 }
 
 .carousel .main-slider {
