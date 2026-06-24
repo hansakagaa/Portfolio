@@ -595,16 +595,16 @@ body *, body *::before, body *::after {
   background: var(--action-el-color);
   border-radius: var(--radius-50);
 }
-.cloud-element::before {
-  width: calc((var(--size-xs) / 2) - 5px);
-  height: calc((var(--size-xs) / 2) - 5px);
-  top: calc((var(--inset-xs) + 1px) * -1);
-  left: calc(var(--inset-xs) + 1px);
-}
+.cloud-element::before,
 .cloud-element::after {
   width: calc((var(--size-xs) / 2) - 5px);
   height: calc((var(--size-xs) / 2) - 5px);
   top: calc((var(--inset-xs) + 1px) * -1);
+}
+.cloud-element::before {
+  left: calc(var(--inset-xs) + 1px);
+}
+.cloud-element::after {
   right: calc(var(--inset-xs) + 1px);
 }
 
@@ -656,9 +656,8 @@ body *, body *::before, body *::after {
     opacity: 1;
   }
 }
-/*--------------------------------------------------------------
-#  ANIMATION LOGIC (When Checkbox is Checked)
---------------------------------------------------------------*/
+
+/* Animation logic (When Checkbox is Checked) */
 input:checked + .toggle-slot {
   background-color: var(--surface-main);
 }
@@ -694,13 +693,13 @@ input:checked + .toggle-slot .stars-wrapper {
 #preloader:before {
   content: "";
   position: fixed;
-  top: calc(50% - 30px);
-  left: calc(50% - 30px);
+  top: calc(50% - var(--inset-xl));
+  left: calc(50% - var(--inset-xl));
   border: calc(var(--border-width) * 6) solid var(--white-color);
   border-color: var(--accent-color) transparent var(--accent-color) transparent;
   border-radius: var(--radius-50);
-  width: calc(var(--size-xs) + 20px);
-  height: calc(var(--size-xs) + 20px);
+  width: calc(var(--size-xs) * 1.5);
+  height: calc(var(--size-xs) * 1.5);
   animation: animate-preloader calc(var(--transition-duration) * 5) linear
     infinite;
 }
@@ -709,7 +708,6 @@ input:checked + .toggle-slot .stars-wrapper {
   0% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(360deg);
   }
@@ -812,7 +810,7 @@ input:checked + .toggle-slot .stars-wrapper {
 }
 
 .progress-ring__bg {
-  stroke: rgba(0, 0, 0, 0.08);
+  stroke: color-mix(in srgb, var(--border-color), transparent 40%);
   stroke-width: 4;
 }
 
@@ -853,29 +851,29 @@ input:checked + .toggle-slot .stars-wrapper {
   top: 0;
   left: 0;
   width: 0%;
-  height: 4px;
+  height: calc(var(--size-xs) / 10);
   background: linear-gradient(to right, var(--accent-color), var(--accent-color));
   z-index: 99999;
   transition: width 0.1s ease-out;
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: calc(var(--size-xs) / 4);
+  height: calc(var(--size-xs) / 4);
   background-color: var(--surface-main);
 }
 
 ::-webkit-scrollbar-track {
   background: var(--surface-sunken);
   box-shadow: var(--box-shadow-inset) !important;
-  border-radius: 50px;
+  border-radius: var(--radius-lg);
   margin: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--surface-main);
-  border-radius: 50px;
-  border: 2px solid var(--surface-sunken);
+  border-radius: var(--radius-lg);
+  border: calc(var(--border-width) * 2) solid var(--surface-sunken);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -1107,8 +1105,7 @@ select:-webkit-autofill {
   cursor: pointer;
 }
 
-/* PHP Email Form Messages
-------------------------------*/
+/* PHP Email Form Messages */
 .email-form .error-message {
   display: none;
   text-align: left;
@@ -1144,7 +1141,6 @@ select:-webkit-autofill {
   0% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(360deg);
   }
