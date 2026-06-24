@@ -229,7 +229,6 @@
   /**
    * Hero section contact button scroll
    */
-
   document.addEventListener("DOMContentLoaded", () => {
     const talkBtn = document.getElementById('lets-talk-btn');
     const nameInput = document.getElementById('contactName');
@@ -253,7 +252,34 @@
     }
   });
 
-  
+  /**
+   * Hero section cv button downloader
+   */
+  document.addEventListener("DOMContentLoaded", () => {
+    const cvBtn = document.getElementById('download-cv-btn');
+
+    if (!cvBtn) return;
+
+    cvBtn.addEventListener('click', function () {
+      const btnText = this.querySelector('.btn-text');
+      const iconElement = this.querySelector('.btn-icon i');
+
+      btnText.textContent = "Downloading...";
+      iconElement.className = "bi bi-hourglass-split"; 
+
+      setTimeout(() => {
+        btnText.textContent = "CV Downloaded!";
+        iconElement.className = "bi bi-check-lg"; 
+
+        setTimeout(() => {
+          btnText.textContent = "Download CV";
+          iconElement.className = "bi bi-download"; 
+        }, 3500);
+      }, 1500);
+    });
+});
+
+
   /**
    * Initiate Pure Counter
    */

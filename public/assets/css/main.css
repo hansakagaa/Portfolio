@@ -1232,11 +1232,57 @@ select:-webkit-autofill {
   max-width: calc((var(--size-xl) * 5) - (var(--size-xs) / 2));
 }
 
-.hero-buttons {
+.hero-btn-container {
   display: flex;
-  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.cv-btn-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.secondary-btn-row {
+  display: flex;
+  justify-content: center;
   align-items: center;
   gap: 20px;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+.cv-btn-container {
+  display: inline-block;
+  position: relative;
+}
+
+.download-cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 35px;
+  background-color: var(--surface-elevated);
+  color: var(--default-color);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow var(--transition-duration) ease;
+  box-shadow: var(--box-shadow);
+  border: var(--border-width) solid var(--border-color);
+}
+
+.download-cv-btn:hover {
+  box-shadow: var(--box-shadow-soft);
+  color: var(--accent-color);
 }
 
 .btn-elevated {
@@ -1246,6 +1292,7 @@ select:-webkit-autofill {
   font-weight: 600;
   border-radius: var(--radius-sm);
   box-shadow: var(--box-shadow);
+  border: var(--border-width) solid var(--border-color);
   transition: all var(--transition-duration) ease;
   text-decoration: none;
 }
@@ -1352,15 +1399,16 @@ select:-webkit-autofill {
     width: calc((var(--size-sm) * 5) + 10px);
     height: calc((var(--size-sm) * 5) + 10px);
   }
-  .hero-buttons {
+  .secondary-btn-row {
     justify-content: space-around;
   }
 }
 
 @media (max-width: 576px) {
-  .hero-buttons {
+  .secondary-btn-row {
     flex-wrap: wrap;
     justify-content: center;
+    gap: 25px;
   }
 }
 
