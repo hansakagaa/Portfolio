@@ -1,0 +1,19 @@
+# /*
+# * Robots TXT v1.0
+# * Copyright @ 2026 The Ashen Hansaka Authors
+# * Licensed under MIT
+# */
+
+User-agent: *
+
+# SECURITY: Prevent Admin, Dashboard, or Database API from appearing in search results.
+# (If your future Admin page URL is different, change '/admin/' to match that name)
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /api/
+
+# ALLOW: Permit search bots to index all other public pages.
+Allow: /
+
+# SITEMAP LINK: Tell search engine bots where to find the sitemap file.
+### Sitemap: https://ashenhansaka.com/sitemap.xml
