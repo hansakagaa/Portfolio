@@ -688,7 +688,7 @@ input:checked + .toggle-slot .stars-wrapper {
   width: 100vw;
   height: 100vh;
   background-color: var(--surface-main);
-  z-index: 99998;
+  z-index: 99999;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -872,7 +872,7 @@ input:checked + .toggle-slot .stars-wrapper {
   opacity: 0;
   right: var(--inset-md);
   bottom: calc(var(--inset-md) * -1);
-  z-index: 99999;
+  z-index: 99998;
   background-color: var(--surface-elevated);
   width: calc(var(--size-xs) + 15px);
   height: calc(var(--size-xs) + 15px);
