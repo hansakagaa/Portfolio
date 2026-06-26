@@ -277,7 +277,7 @@
         }, 3500);
       }, 1500);
     });
-});
+  });
 
 
   /**
@@ -347,7 +347,7 @@
             scrollTop.style.boxShadow = "var(--box-shadow-inset)";
           }
         }
-    });
+      });
     });
 
     if (lightboxClose) {
@@ -456,10 +456,14 @@
   /**
    * Preloader
    */
-  const preloader = document.querySelector('#preloader');
-  if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.remove();
-    });
-  }
+  window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+      preloader.classList.add('fade-out');
+
+      setTimeout(() => {
+        preloader.remove();
+      }, 600);
+    }
+  });
 })();

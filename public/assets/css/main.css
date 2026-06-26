@@ -683,34 +683,116 @@ input:checked + .toggle-slot .stars-wrapper {
 --------------------------------------------------------------*/
 #preloader {
   position: fixed;
-  inset: 0;
-  z-index: 999999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--surface-main);
+  z-index: 99998;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.6s;
+  opacity: 1;
+  visibility: visible;
+}
+
+#preloader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.loader-circle {
+  width: 120px;
+  height: 120px;
+  background-color: var(--surface-elevated);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow:var(--box-shadow-soft);
+}
+
+.coffee-cup-container {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.base-cup,
+.liquid-cup {
+  font-size: 3rem;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+
+.base-cup {
+  color: color-mix(in srgb, Var(--accent-color), transparent 50%);
+  opacity: 0.4;
+}
+
+.coffee-fill-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
   overflow: hidden;
-  background: var(--surface-main);
-  transition: all calc(var(--transition-duration) * 3) var(--transition-easing);
+  animation: fill-up-liquid 3s ease-in-out infinite;
 }
 
-#preloader:before {
-  content: "";
-  position: fixed;
-  top: calc(50% - var(--inset-xl));
-  left: calc(50% - var(--inset-xl));
-  border: calc(var(--border-width) * 6) solid var(--white-color);
-  border-color: var(--accent-color) transparent var(--accent-color) transparent;
-  border-radius: var(--radius-50);
-  width: calc(var(--size-xs) * 1.5);
-  height: calc(var(--size-xs) * 1.5);
-  animation: animate-preloader calc(var(--transition-duration) * 5) linear
-    infinite;
+.liquid-cup {
+  color: var(--accent-color);
+  bottom: 0;
 }
 
-@keyframes animate-preloader {
+.loader-text {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--default-color);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  animation: text-pulse 1.2s ease-in-out infinite alternate;
+}
+
+/* Animation */
+@keyframes fill-up-liquid {
   0% {
-    transform: rotate(0deg);
+    height: 0%;
+  }
+  30% {
+    height: 0%;
+  }
+  70% {
+    height: 100%;
+  }
+  90% {
+    height: 100%;
   }
   100% {
-    transform: rotate(360deg);
+    height: 0%;
   }
+}
+
+@keyframes text-pulse {
+  0% { opacity: 0.4; }
+  100% { opacity: 1; }
 }
 
 /*--------------------------------------------------------------
